@@ -1,0 +1,15 @@
+<!--
+  1 text 不会换行
+  2 view 会换行
+-->
+<text>1</text>
+<text>2</text>
+<view>1</view>
+<view>2</view>
+
+<!--1 字符串-->
+<view>{{msg}}</view>
+<!--2 数字类型-->
+<view>{{num}}</view>
+<!--3 布尔类型-->
+<view>是否是女生：{{isGirl}}</view>
