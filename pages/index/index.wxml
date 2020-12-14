@@ -1,0 +1,27 @@
+<view class="xxpt_index">
+<SearchInput></SearchInput>
+</view>
+<!--轮播图-->
+<swiper autoplay interval="3000" circular indicator-dots indicator-color="#0094ff" indicator-active-color="#ff0094">
+  <swiper-item> <image mode="widthFix" src="http://static.basicedu.chaoxing.com/erya_new/8fa460fcafbefc2224a99f203a11fc3d.jpg"></image></swiper-item>
+  <swiper-item><image mode="widthFix" src="http://static.basicedu.chaoxing.com/erya_new/9c90a5b51cecb18afc42c9b8cc4a419b.jpg"></image></swiper-item>
+  <swiper-item><image mode="widthFix" src="http://static.basicedu.chaoxing.com/erya_new/068e5e8f095f9d116fcb7b1f1f4281da.jpg"></image></swiper-item>
+</swiper>
+<!--图标-->
+<view>
+  <swiper class="categoryList">
+  <block wx:for="{{categoryList}}" wx:key="item">
+  <swiper-item>
+  <block wx:for="{{item}}" wx:key="item">
+    <view class="category-info">
+      <navigator url="{{item.url}}" open-type="navigate" hover-class="other-navigator-hover">
+        <image src="{{item.src}}" 
+        class="category-image"></image>
+        <view class="category-text">{{item.name}}</view>
+      </navigator>
+    </view>
+  </block>
+  </swiper-item>
+  </block>
+  </swiper>
+</view>
