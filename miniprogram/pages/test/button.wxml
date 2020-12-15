@@ -1,0 +1,23 @@
+<!--pages/test/button.wxml-->
+<!--button-->
+<view class="btn" bindtap="powerDrawer" data-statu="open">button</view>
+ 
+<!--mask-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+  <!--drawer content-->
+  <view class="drawer_title">绑 定 用 户</view>
+  <view class="drawer_content">
+    <view class="top grid">
+      <label class="title col-0">账号</label>
+      <input class="input_base input_h30 col-1" name="Account" placeholder="请输入学号/工号"></input>
+    </view>
+    <view class="top grid">
+      <label class="title col-0">姓名</label>
+      <input class="input_base input_h30 col-1" name="Name" placeholder="请输入姓名"></input>
+    </view>
+  </view>
+  <view class="btn_ok" bindtap="powerDrawer" data-statu="close">立即绑定</view>
+</view>
