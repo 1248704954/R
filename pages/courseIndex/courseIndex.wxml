@@ -1,0 +1,52 @@
+<!--pages/courseIndex/courseIndex.wxml-->
+<view class="cates">
+  <!--滚动条 -->
+  <view>
+    <scroll-view scroll-x="true">
+      <view class="scroll-view_class">
+        <view>
+          <view class="{{option==0?'choose':'nochoose'}}" id="0" bindtap="optionSelect">任务</view>
+          <view class="divLine" wx:if="{{option == 0}}"> </view>
+        </view>
+        <view>
+          <view class="{{option==1?'choose':'nochoose'}}" id="1" bindtap="optionSelect">章节</view>
+          <view class="divLine" wx:if="{{option == 1}}"> </view>
+        </view>
+        <view>
+          <view class="{{option==2?'choose':'nochoose'}}" id="2" bindtap="optionSelect">更多</view>
+          <view class="divLine" wx:if="{{option == 2}}"> </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view wx:if="{{option == 0}}">
+      任务
+    </view>
+
+    <view wx:if="{{option == 1}}">
+      <view class="page__bd" wx:for="{{ChapterList}}" wx:for-index="i" wx:for-item="Chapter">
+        <view class="weui-cells__title" style="display:flex" id = "{{i}}" bindtap="chapterSelect">
+          <switch class="switch-font" checked="" disabled="true"></switch>
+          <view style="font-size:large" id = "{{i}}">
+            第{{S_num[(i+1)/10]}}{{s_num[(i+1)%10]}}章：{{Chapter.Chapter_Name}}
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title"  wx:if="{{displayDroplist[i]}}" wx:for="{{Chapter.Unit_List}}" wx:for-index="j"
+          wx:for-item="Unit">
+          <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image class="iconfont icondengdai-"></image>
+            </view>
+            <view class="weui-cell__bd" style="font-size:small">
+              第{{S_num[(j+1)/10]}}{{s_num[(j+1)%10]}}单元：{{Unit.Chapter_Unit_Name}}</view>
+          </navigator>
+        </view>
+        <view class="divLine2" wx:if="{{!displayDroplist[i]}}"> </view>
+      </view>
+    </view>
+
+    <view wx:if="{{option == 2}}">
+      更多
+    </view>
+  </view>
+</view>

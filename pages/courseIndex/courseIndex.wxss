@@ -1,0 +1,61 @@
+/* pages/courseIndex/courseIndex.wxss */
+
+@import "../../lib/weui.wxss";
+
+.scroll-view_class {
+  height: 75rpx;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+}
+
+.choose {
+  align-items: center;
+  text-align: center;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+
+  font-weight: bold;
+  font-size: large;
+
+  width: 250rpx;
+}
+
+.nochoose {
+  align-items: center;
+  text-align: center;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+
+  font-size: large;
+  color: gray;
+
+  width: 250rpx;
+}
+
+.divLine{
+  background:#00FF7F;
+  width: 100%;
+  height: 5rpx;
+  visibility: visible;
+ }
+ .divLine2 {
+  background:#C0C0C0;
+  width: 100%;
+  height: 2rpx;
+  visibility: visible;
+ }
+
+
+ @import "../../lib/icon.wxss";
+.icondengdai- {
+  width: 20px; 
+  height: 20px;
+  color: orange;
+}
+
+.switch-fonr {
+  transform: scale(.1)
+
+}

@@ -3,8 +3,8 @@ const app = getApp()
 const DB_filelist = wx.cloud.database().collection("filelist")
 const DB_Student_Message =wx.cloud.database().collection("Student_Message")
 
-let InputAccount = ""
-let InputName = ""
+let InputAccount = "" //输入 学工号
+let InputName = "" //输入 姓名
 
 Page({
   
@@ -15,8 +15,7 @@ Page({
     showExitBinding: false, //显示 解绑 按钮
     DataList : [] //个人具体信息
   },
-  
- onLoad(){
+  onLoad(){
     let THIS = this
     THIS.setData({
       avatarUrl: app.globalData.avatarUrl
@@ -27,7 +26,14 @@ Page({
   getBindingStatus: function(){ //获取当前绑定状态
     let THIS = this
     var tmp = app.globalData.account;
-    if (app.globalData.account == null) { //未绑定账号
+    if (app.globalData.openid == null) { //未登录
+      tmp = "暂未绑定";
+      THIS.setData({
+        showBinding : false,
+        showExitBinding : false
+      })
+    }
+    else if (app.globalData.account == null) { //未绑定账号
       tmp = "暂未绑定";
       THIS.setData({
         showBinding : true,
@@ -138,6 +144,7 @@ Page({
             ({
                 success(res){
                   console.log(res.data[0]._id) 
+                  console.log(app.globalData.openid)
                   wx.cloud.callFunction({ //更新记录(字段：_openid)
                     name : "updateOpenid",
                     data:{
@@ -151,12 +158,13 @@ Page({
                   })
                   app.globalData.account = InputAccount
                   that.getBindingStatus(); //获取当前绑定状态
+                  that.showBindingOk(); //弹出 成功窗口
+                  that.util(currentStatu); //动画效果
+                  console.log(app.globalData.account)
+                  InputAccount = "";  //输入 学工号
+                  InputName = ""; //输入 姓名
                 },
             })
-            that.showBindingOk(); //弹出 成功窗口
-            that.util(currentStatu); //动画效果
-            console.log(app.globalData.account)
-            
           }
           else //绑定失败
           {

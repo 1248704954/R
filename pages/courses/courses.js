@@ -1,4 +1,5 @@
 // pages/courses/courses.js
+const app = getApp()
 
 let inputMess = ""
 
@@ -6,8 +7,10 @@ Page({
   // 页面的初始数据
   data: {
     inputShowed: false, //初始文本框不显示内容
+    not_find: false, //未找到显示
     ShowList: []
   },
+
   // 使文本框进入可编辑状态
   showInput: function () {
     this.search(inputMess)
@@ -15,40 +18,45 @@ Page({
       inputShowed: true //设置文本框可以输入内容
     });
   },
+
   // 取消搜索
   hideInput: function () {
     this.setData({
       inputShowed: false
     });
-    this.search("")
+    this.search(""); //设置为空
   },
-  a: function (e) {
+
+  //点击搜索事件
+  searchClick: function (e) {
     inputMess = e.detail.value
     this.search(e.detail.value)
   },
-  //筛选
+
+  //筛选课程
   search: function (key) {
     console.log(key)
     var This = this;
     var ShowList = wx.getStorage({
       key: 'DataList',
       success: function (res) {
-        if (key == "") {
+        if (key == "") { //搜索栏为空
           This.setData({
             ShowList: res.data
           })
           return;
         }
-        var arr = [];
+        var arr = []; //存储结果列表
         for (let i in res.data) {
-          if (String(res.data[i].Cname).indexOf(key) >= 0 || String(res.data[i].Tname).indexOf(key) >= 0)
+          console.log(res.data[i].Course_Number)
+          console.log(res.data[i].stu)
+          console.log(res.data[i].stu[0].Course_Name)
+          if (String(res.data[i].stu[0].Course_Name).indexOf(key) >= 0 || String(res.data[i].stu[0].Teacher_Name).indexOf(key) >= 0)
             arr.push(res.data[i]);
         }
         if (arr.length == 0) {
           This.setData({
-            ShowList: [{
-              Cname: "无相关数据"
-            }]
+            ShowList: []
           })
         } else {
           This.setData({
@@ -60,21 +68,41 @@ Page({
   },
 
   onLoad: function () {
-    var DataList = [{
-      Cname: "数学",
-      Tname: "张三",
-      Cimage: "http://static.basicedu.chaoxing.com/erya_new/8fa460fcafbefc2224a99f203a11fc3d.jpg"
-    }, {
-      Cname: "英语",
-      Tname: "李四",
-      Cimage: "http://static.basicedu.chaoxing.com/erya_new/8fa460fcafbefc2224a99f203a11fc3d.jpg"
-    }]
-    wx.setStorage({
-      data: DataList,
-      key: 'DataList',
+    this.findAllCourses();//查询所有课程信息
+  },
+  //查询所有课程信息
+  findAllCourses: function() {
+    let that = this
+    let account = app.globalData.account
+    if (account == null) account = ""
+    console
+    wx.cloud.callFunction({ //查询记录(条件：账号)
+      name : "getStudentCourse",
+      data:{
+        account: app.globalData.account
+      },
+      fail(res){console.log("获取数据失败",res)},
+      success(res){
+        var tmp = []; //存储结果列表
+        for (let i in res.result.list)
+          tmp.push(res.result.list[i])
+        wx.setStorage({
+          data: tmp,
+          key: 'DataList',
+        })
+        that.setData({
+          ShowList: tmp
+        })
+        console.log(tmp)
+      }
     })
-    this.setData({
-      ShowList: DataList
+  },
+
+  //跳转 courseIndex页面
+  toPageCourseIndex: function(e) {
+    console.log('/pages/courseIndex/courseIndex?courseId=' + e.target.id)
+    wx.navigateTo({
+      url: '/pages/courseIndex/courseIndex?courseId=' + e.target.id,
     })
   }
 });

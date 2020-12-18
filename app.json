@@ -4,10 +4,10 @@
     "pages/index/index",
     "pages/information/information",
     
-    "pages/search/search",
     "pages/user/user",
     "pages/my/my",
-    "pages/courses/courses"
+    "pages/courses/courses",
+    "pages/courseIndex/courseIndex"
   ],
   "window":{
     "backgroundTextStyle":"light",
