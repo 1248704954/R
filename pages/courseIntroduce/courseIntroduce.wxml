@@ -1,0 +1,9 @@
+<!--pages/courseintroduce/courseintroduce.wxml-->
+<view class="title">课程说明</view>
+<view class="picture">
+  <view class="content">
+    <view wx:for="{{items}}">
+      {{items[index]}}
+    </view>
+  </view>
+</view>

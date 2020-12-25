@@ -70,12 +70,12 @@ Page({
   onLoad: function () {
     this.findAllCourses();//查询所有课程信息
   },
+  
   //查询所有课程信息
   findAllCourses: function() {
     let that = this
     let account = app.globalData.account
     if (account == null) account = ""
-    console
     wx.cloud.callFunction({ //查询记录(条件：账号)
       name : "getStudentCourse",
       data:{
@@ -96,6 +96,13 @@ Page({
         console.log(tmp)
       }
     })
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    this.onLoad();
   },
 
   //跳转 courseIndex页面

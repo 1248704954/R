@@ -1,0 +1,37 @@
+/* pages/text/text.wxss */
+
+page {
+  background-color: white;
+}
+
+@import "../../lib/icon.wxss";
+@import "../../lib/search.wxss";
+
+.one-file {
+  display: flex;
+  border-bottom: solid 1px #DCDCDC;
+}
+
+.file-image {
+  margin: 20rpx 20rpx 0rpx 20rpx;
+  height: 100rpx;
+  width: 100rpx; 
+  border-radius: 15rpx;
+}
+
+.one-line {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  background-color: 	#DCDCDC;
+  height: 1rpx;
+}
+
+.file-name {
+  margin-top: 20rpx;
+}
+
+.file-date {
+  color: grey;
+  margin-top: 15rpx;
+  font-size: small;
+}

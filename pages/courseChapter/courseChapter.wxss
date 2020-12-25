@@ -1,0 +1,93 @@
+page {
+  background-color: white;
+}
+
+@import "../../lib/icon.wxss";
+@import "../../lib/search.wxss";
+
+.videoView {
+  position: relative;
+  margin: 40rpx 50rpx 30rpx;
+}
+ 
+
+.cover01 {
+  width: 100%;
+  position: center;
+}
+ 
+.text {
+  margin-left: 40rpx;
+  margin-right: 20rpx;
+  font-size: 36rpx;
+  font-weight: 650;
+  /* font-family: NSimSun; */
+}
+  
+.time {
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  color: white;
+  font-size: 33rpx;
+}
+
+.cates .chapter_Top {
+  margin: 50rpx 20rpx 0 20rpx;
+}
+.cates .chapter_Top .chapter_Name {
+  margin: 20rpx;
+  font-size: larger;
+  font-weight: bold;
+}
+.cates .chapter_Part{
+  padding: 20rpx 0rpx 20rpx 20rpx;
+  margin: 20rpx 20rpx 30rpx 20rpx;
+  border: dashed 1px #a7a8a8;
+}
+.cates .chapter_Part .chapter_Main{
+  margin-bottom: 20rpx;
+}
+.cates .chapter_Part .chapter_Point{
+  display: inline;
+  color: orange;
+}
+.cates .chapter_Part .chapter_Text{
+  margin-left: 20rpx;
+  color: #1d1616;
+  display: inline;
+  font-weight: bold;
+}
+.cates .chapter_Part .chapter_Video{
+  margin: 20rpx 20rpx 30rpx 0rpx;
+  height: 420rpx;
+  font-size: 20rpx;
+}
+.cates .chapter_Part .chapter_Document{
+  height: 150rpx;
+  margin: 20rpx 20rpx 20rpx 0rpx;
+  font-size: 20rpx;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 30rpx;
+  display: flex;
+}
+.cates .chapter_Part .chapter_Document .chapter_Document_Pic{
+  margin: 20rpx 0rpx 20rpx 20rpx;
+  height: 110rpx;
+  width: 110rpx;
+  line-height: 110rpx;
+}
+.cates .chapter_Part .chapter_Document .chapter_Document_Name{
+  margin: 20rpx 20rpx 20rpx 10rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+
+.cates .chapter_Part .chapter_Video .video {
+  width: 100%;
+  height: 420rpx;
+  border-radius: 20rpx;
+  box-shadow: 2px 3px 10px #6b6b6b;
+}

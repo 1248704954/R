@@ -14,7 +14,6 @@ Page({
   //option选择(任务、章节、更多) 事件
   optionSelect: function (s) {
     var THIS = this
-    console.log(s.target.id)
     if (s.target.id == 0) { //选择 任务
       THIS.setData({
         option: 0
@@ -28,11 +27,9 @@ Page({
         option: 2
       })
     }
-    console.log(option)
   },
   //章节选择 事件
   chapterSelect:function(e) {
-    console.log(e.target.id)
     var THIS = this;
     var arr = this.data.displayDroplist;
     if(arr[e.target.id] == true)
@@ -50,7 +47,7 @@ Page({
     })
 
     this.setData({
-      option: 1 //默认显示“任务”页
+      option: 1 //默认显示“章节”页
     })
     this.findAllChapter(); //查询课程的所有章节信息
   },
@@ -78,6 +75,33 @@ Page({
           displayDroplist:arr
         })
       }
+    })
+  },
+
+  //跳转 courseChapter页面
+  toPageCourseChapter: function(e) {
+    console.log(e.currentTarget.id) 
+    var s = e.currentTarget.id;
+    var pos = s.lastIndexOf(",");
+    var chapter = s.substring(0, pos);
+    var unit = s.substring(pos + 1);
+    console.log(chapter)
+    console.log(unit)
+    wx.navigateTo({
+      url: '/pages/courseChapter/courseChapter?courseId=' + this.data.courseId
+        + "&chapter=" + chapter + "&unit=" + unit
+    })
+  },
+  //跳转 courseMaterial页面
+  toPageCourseMaterial: function(e) {
+    wx.navigateTo({
+      url: '/pages/courseMaterial/courseMaterial?courseId=' + this.data.courseId
+    })
+  },
+  //跳转 courseIntroduce页面
+  toPageCourseIntroduce: function(e) {
+    wx.navigateTo({
+      url: '/pages/courseIntroduce/courseIntroduce?courseId=' + this.data.courseId
     })
   }
 })

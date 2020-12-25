@@ -2,7 +2,7 @@
 <view class="cates">
   <!--滚动条 -->
   <view>
-    <scroll-view scroll-x="true">
+    <scroll-view scroll-x="true" class="scroll">
       <view class="scroll-view_class">
         <view>
           <view class="{{option==0?'choose':'nochoose'}}" id="0" bindtap="optionSelect">任务</view>
@@ -20,7 +20,27 @@
     </scroll-view>
 
     <view wx:if="{{option == 0}}">
-      任务
+      <view class="uploader">
+        <view class="uploader-text" bindtap="">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYOGWD.png"></image>
+          <text class="text">讨论</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
+      <view class="uploader">
+        <view class="uploader-text" bindtap="">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYLbZt.png"></image>
+          <text class="text">作业</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
+      <view class="uploader">
+        <view class="uploader-text" bindtap="">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYLa5T.png"></image>
+          <text class="text">通知</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
     </view>
 
     <view wx:if="{{option == 1}}">
@@ -31,13 +51,12 @@
             第{{S_num[(i+1)/10]}}{{s_num[(i+1)%10]}}章：{{Chapter.Chapter_Name}}
           </view>
         </view>
-        <view class="weui-cells weui-cells_after-title"  wx:if="{{displayDroplist[i]}}" wx:for="{{Chapter.Unit_List}}" wx:for-index="j"
-          wx:for-item="Unit">
-          <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
-            <view class="weui-cell__hd">
+        <view class="search-cells search-cells_after-title"  wx:if="{{displayDroplist[i]}}" wx:for="{{Chapter.Unit_List}}" wx:for-index="j" wx:for-item="Unit" bindtap="toPageCourseChapter" id="{{i}},{{j}}">
+          <navigator url="" class="search-cell weui-cell_access" hover-class="search-cell_active">
+            <view class="search-cell__hd">
               <image class="iconfont icondengdai-"></image>
             </view>
-            <view class="weui-cell__bd" style="font-size:small">
+            <view class="search-cell__bd" style="font-size:small">
               第{{S_num[(j+1)/10]}}{{s_num[(j+1)%10]}}单元：{{Unit.Chapter_Unit_Name}}</view>
           </navigator>
         </view>
@@ -46,7 +65,41 @@
     </view>
 
     <view wx:if="{{option == 2}}">
-      更多
+      <view class="uploader">
+        <view class="uploader-text" bindtap="toPageCourseMaterial">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYRJkn.png"></image>
+          <text class="text">课程资料</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
+      <view class="uploader">
+        <view class="uploader-text" bindtap="">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYWnE9.png"></image>
+          <text class="text">学习统计</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
+      <view class="uploader">
+        <view class="uploader-text" bindtap="">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYWGuD.png"></image>
+          <text class="text">课堂笔记</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
+      <view class="uploader" bindtap="toPageCourseIntroduce">
+        <view class="uploader-text" bindtap="">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYWR5n.png"></image>
+          <text class="text">课程说明</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
+      <view class="uploader">
+        <view class="uploader-text" bindtap="">
+          <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYWXP1.png"></image>
+          <text class="text">课程评价</text>
+          <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+        </view>
+      </view>
     </view>
   </view>
 </view>

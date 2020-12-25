@@ -1,5 +1,5 @@
 /* pages/courseIndex/courseIndex.wxss */
-
+@import "../../lib/search.wxss";
 @import "../../lib/weui.wxss";
 
 .scroll-view_class {
@@ -14,11 +14,8 @@
   align-items: center;
   text-align: center;
   margin-top: 10rpx;
-  margin-bottom: 10rpx;
-
   font-weight: bold;
   font-size: large;
-
   width: 250rpx;
 }
 
@@ -26,19 +23,16 @@
   align-items: center;
   text-align: center;
   margin-top: 10rpx;
-  margin-bottom: 10rpx;
-
   font-size: large;
   color: gray;
-
   width: 250rpx;
 }
 
 .divLine{
-  background:#00FF7F;
+  background:#333;
   width: 100%;
-  height: 5rpx;
-  visibility: visible;
+  height: 20rpx;
+  margin-top: 1rpx;
  }
  .divLine2 {
   background:#C0C0C0;
@@ -54,8 +48,52 @@
   height: 20px;
   color: orange;
 }
-
 .switch-fonr {
   transform: scale(.1)
 
+}
+.icongerenziliao {
+  width: 40px;
+}
+
+.iconjiantou {
+  margin-left: 150px;
+  color: #9a9a9a;
+}
+
+
+
+.uploader{
+  padding-left: 30rpx;
+  height: 100rpx;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  border-color:#EEE;
+  /* border: 0px; */
+  margin-top: 0px;
+}
+.uploader-text{
+  width: 100%;
+  line-height: 50px;
+  font-size: 34rpx;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+}
+.uploader .uploader-text .icon {
+  margin-top: 5px;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20px;
+  color: grey;
+}
+.uploader .uploader-text .text {
+  color: #222;
+  font-size: 14px;
+}
+.iconjiantou1 {
+  position: absolute;
+  left: 670rpx;
+  color: grey;
 }

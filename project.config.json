@@ -78,6 +78,31 @@
         {
           "name": "pages/courseIndex/courseIndex",
           "pathName": "pages/courseIndex/courseIndex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/courseMore/courseMore",
+          "pathName": "pages/courseMore/courseMore",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/courseChapter/courseChapter",
+          "pathName": "pages/courseChapter/courseChapter",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/user/user",
+          "pathName": "pages/user/user",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/courseDiscussion/courseDiscussion",
+          "pathName": "pages/courseDiscussion/courseDiscussion",
+          "query": "",
           "scene": null
         }
       ]

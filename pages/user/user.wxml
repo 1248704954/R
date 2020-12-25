@@ -31,7 +31,7 @@
   <navigator open-type="navigate" class="uploader-text" bindtap="toPageCourse">
     <text class="iconfont iconkecheng" style="font-size:30px;color:orange"></text>
     <text style="color:black;" decode="{{true}}">课程&emsp;&emsp;</text>
-    <text class="iconfont iconjiantou1" style="font-size:20px;color=	#808080;"> </text>
+    <text class="iconfont iconjiantou1" style="font-size:20px;color=#808080;"> </text>
   </navigator>
 </view>
 

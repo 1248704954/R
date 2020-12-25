@@ -1,0 +1,27 @@
+/* pages/courseintroduce/courseintroduce.wxss */
+.title{
+  font-size: large;
+  font-weight: 600;
+  color:#333;
+  margin-top:30rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.picture{
+  margin: 0rpx 20rpx 20rpx 20rpx;
+  border: 3rpx solid #00BFFF;
+  border-radius: 10rpx;
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
+  padding: 10rpx;
+
+}
+.content{
+  color: #666;
+  font-size: 29.5rpx;
+  margin-bottom: 20rpx;
+  line-height: 40rpx;
+  letter-spacing: 2rpx;
+  margin-left: 15rpx;
+  display:block;
+
+}
