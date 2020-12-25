@@ -103,5 +103,12 @@ Page({
     wx.navigateTo({
       url: '/pages/courseIntroduce/courseIntroduce?courseId=' + this.data.courseId
     })
+  },
+
+  //跳转 courseDiscussion页面
+  toPageCourseDiscussion: function(e) {
+    wx.navigateTo({
+      url: '/pages/courseDiscussion/courseDiscussion'
+    })
   }
 })

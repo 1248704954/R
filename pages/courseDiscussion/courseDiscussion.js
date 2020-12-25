@@ -99,23 +99,24 @@ Page({
   },
 
   onShow: function (e) {
-    let THIS = this;
-    wx.cloud.callFunction({
-      name: 'getcomment',
-      data: {
-        Father_Id: 0
-      },
-      success(res) {
-        console.log("获取数据成功", res.result.data),
-          res.result.data.forEach((item) => {
-            item.Date = item.Date.substring(0, 10) + " " + item.Date.substring(11, 19);
-          });
-        THIS.setData({
-          saveList: res.result.data,
-          prombleList: res.result.data
-        })
-      }
-    })
+    this.onLoad();
+    // let THIS = this;
+    // wx.cloud.callFunction({
+    //   name: 'getcomment',
+    //   data: {
+    //     Father_Id: 0
+    //   },
+    //   success(res) {
+    //     console.log("获取数据成功", res.result.data),
+    //       res.result.data.forEach((item) => {
+    //         item.Date = item.Date.substring(0, 10) + " " + item.Date.substring(11, 19);
+    //       });
+    //     THIS.setData({
+    //       saveList: res.result.data,
+    //       prombleList: res.result.data
+    //     })
+    //   }
+    // })
   },
 
 
