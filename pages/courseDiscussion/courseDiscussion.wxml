@@ -5,7 +5,7 @@
     <!-- 可编辑时的搜索框 -->
     <view class="search-search-bar__box">
       <icon class="search-icon-search_in-box" type="search" size="14"></icon>
-      <input type="text" class="search-search-bar__input" placeholder="搜索" focus="{{inputShowed}}" bindinput="a" />
+      <input type="text" class="search-search-bar__input" placeholder="搜索" focus="{{inputShowed}}" bindinput="searchClick" />
     </view>
     <!-- 最初始时的搜索框 -->
     <label class="search-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
@@ -26,10 +26,10 @@
     </view>
     <view class="date-font">{{item.Date}}</view>
     <!-- 评论 -->
-    <view class="text-font" disabled="true" auto-height="true" value = "{{item.S_comment}}"></view>
+    <textarea class="text-font" disabled="true" auto-height="true" >{{item.S_comment}}</textarea>
     <view style="display:flex">
       <!-- 讨论 -->
-      <button bindtap="totalk"  id="{{item.Children_Id}}">
+      <button bindtap="toPageCourseTask"  id="{{item.Children_Id}}">
         <text class="iconfont icontaolun" style="font-size:40rpx;color:grey"></text>
         <text style="font-size:30rpx;color:grey"> 讨论 </text>
       </button>
@@ -47,8 +47,8 @@
 <!-- 编辑框 -->
 <form bindsubmit="publish">
   <view class="pocket_input" style="bottom:0rpx;">
-    <view name="text" class="input_style" cursor-spacing="10" focus="true" auto-height="true" placeholder="发布讨论"
-      value="{{text_value}}" show-confirm-bar="{{false}}"></view>
+    <textarea name="text" class="input_style" cursor-spacing="10" fouse="true"  auto-height="true" placeholder="发布讨论"
+    show-confirm-bar="{{false}}" value="{{text_value}}"></textarea>
     <button class="weui-btn btn-font" type="primary" size="mini" form-type="submit">发布</button>
   </view>
 </form>

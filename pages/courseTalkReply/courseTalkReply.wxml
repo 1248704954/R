@@ -1,0 +1,85 @@
+<view class="page__bd" wx:for="{{List}}" wx:for-item="item" wx:for-index="i">
+  <view class="promble-font" style="margin-left:20rpx">
+    <view style="display:flex">
+      <view class="name-font">{{item.Sname}}</view>
+    </view>
+    <view class="date-font">{{item.Date}}</view>
+    <!-- 评论 -->
+    <view class="text-font" disabled="true" auto-height="true">{{item.S_comment}}</view>
+    <view style="display:flex">
+    </view>
+  </view>
+</view>
+
+<view style="padding-bottom:150rpx">
+  <view class="page__bd" wx:for="{{prombleList}}" wx:for-item="item" wx:for-index="i">
+    <view class="promble-font">
+      <view style="display:flex">
+        <view class="name-font">{{item.Sname}}</view>
+        <!-- 删除 -->
+        <text class="iconfont iconshanchu delete-font" id="{{i}}" bindtap="is_delete"> </text>
+      </view>
+      <view class="date-font">{{item.Date}}</view>
+      <!-- 评论 -->
+      <view class="text-font" disabled="true" auto-height="true">{{item.S_comment}}</view>
+      <view style="display:flex">
+        <!-- 讨论 -->
+        <button bindtap="toPageCourseTask"  id="{{item.Children_Id}}">
+          <text class="iconfont icontaolun" style="font-size:40rpx;color:grey"></text>
+          <text style="font-size:30rpx;color:grey"> 评论 </text>
+        </button>
+        <!-- 点赞 -->
+        <button bindtap="likeUp" id="{{i}}">
+          <text id="{{i}}" class="iconfont icondianzan"
+            style="font-size:40rpx;color:{{item.Like_Number>0?'blue':'grey'}}"></text>
+          <text id="{{i}}" style="font-size:30rpx;color:{{item.Like_Number>0?'blue':'grey'}}"> {{item.Like_Number}} 赞
+          </text>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 编辑框 -->
+<form bindsubmit="publish">
+  <view class="pocket_input" style="bottom:0rpx;">
+    <textarea name="text" class="input_style" cursor-spacing="10" fouse="true" auto-height="true" placeholder="发布评论"
+      value="{{text_value}}" show-confirm-bar="{{false}}"></textarea>
+    <button class="weui-btn btn-font" type="primary" size="mini" form-type="submit">发布</button>
+  </view>
+  <text style="display:none">'</text>
+  <text></text>
+</form>
+
+<!-- 删除确认框 -->
+<view class="fadeIn" wx:if="{{isdelete > -1}}" style="auto-height">
+  <view class="weui-mask"></view>
+  <view class="weui-dialog weui-skin_android">
+    <view class="weui-dialog__hd"><strong class="weui-dialog__title">删除</strong></view>
+    <view class="weui-dialog__bd">
+      您是否确认删除该条评论
+    </view>
+    <view class="weui-dialog__ft">
+      <a class="weui-dialog__btn weui-dialog__btn_default" bindtap="delete_close">取消</a>
+      <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="delete_yes">确认</a>
+    </view>
+  </view>
+</view>
+
+<!-- 删除成功 -->
+<view class="fadeIn {{hideToast ? 'fadeOut' : ''}}" wx:if="{{toast}}">
+  <view class="weui-mask_transparent"></view>
+  <view class="weui-toast">
+    <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+    <view class="weui-toast__content">删除成功</view>
+  </view>
+</view>
+
+<!-- 删除失败 -->
+<view class="fadeIn {{hideWarnToast ? 'fadeOut' : ''}}" wx:if="{{warnToast}}">
+  <view class="weui-mask_transparent"></view>
+  <view class="weui-toast">
+    <i class="weui-icon-warn weui-icon_toast"></i>
+    <view class="weui-toast__content">获取链接失败</view>
+  </view>
+</view>

@@ -157,6 +157,7 @@ Page({
                     }
                   })
                   app.globalData.account = InputAccount
+                  app.globalData.name = InputName
                   that.getBindingStatus(); //获取当前绑定状态
                   that.showBindingOk(); //弹出 成功窗口
                   that.util(currentStatu); //动画效果
@@ -197,6 +198,7 @@ Page({
           })
           that.showBindingOk(); //弹出 成功窗口
           app.globalData.account = null
+          app.globalData.name = null
           that.getBindingStatus(); //获取当前绑定状态
         },
     })

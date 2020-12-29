@@ -10,7 +10,8 @@
     "pages/courseChapter/courseChapter",
     "pages/courseMaterial/courseMaterial",
     "pages/courseIntroduce/courseIntroduce",
-    "pages/courseDiscussion/courseDiscussion"
+    "pages/courseDiscussion/courseDiscussion",
+    "pages/courseTalkReply/courseTalkReply"
   ],
   "window":{
     "backgroundTextStyle":"light",

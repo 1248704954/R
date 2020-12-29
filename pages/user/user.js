@@ -69,8 +69,9 @@ Page({
         success(res){
           if(res.data.length!=0) { //已经绑定账号
             app.globalData.account = res.data[0].Account
+            app.globalData.name = res.data[0].Name
             console.log(res.data)
-            console.log(res.data[0].Name)
+            console.log(app.globalData.name)
             that.setData({
               Accout:res.data[0].Account,
               Name:res.data[0].Name,

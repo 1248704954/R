@@ -1,17 +1,38 @@
+.id1{
+ background-color:#fff;
+
+}
+.id2{
+  background-color:rgb(252, 248, 248);
+  border: 3rpx solid #d6d4d0;
+ }
+.Sname1{
+  font-size: 14px;
+}
+.Sname2{
+  font-size: 14px;
+}
+.Date1{
+  font-size: 12px;
+}
+.Date2{
+  font-size: 12px;
+}
+
 /* pages/discussion/discussion.wxss */
 
 @import "../../lib/search.wxss";
 
 .promble-font {
-  padding-top: 15rpx;
   padding-left: 15rpx;
+  padding-top: 15rpx;
+  padding-right: 15rpx;
   margin-top: 30rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
+  margin-left: 100rpx;
+  margin-right: 30rpx;
   flex-direction: column;
 
   background-color: white;
- 
   border: 1.5rpx solid rgba(0, 0, 0, 0.1);
   border-radius: 20rpx;
 }

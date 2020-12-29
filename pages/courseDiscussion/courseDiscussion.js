@@ -1,69 +1,27 @@
 // pages/discussion/discussion.js
+const app = getApp()
 
 let inputMess = ""
- // 最大Children_Id+1
-let child_Id=0
+let child_Id = 0 // 最大Children_Id+1
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // 发表的文字
-    text_value: "",
-    //初始文本框不显示内容
-    inputShowed: false,
+    text_value: "", // 发表的文字
+    inputShowed: false, //初始文本框不显示内容
 
-    // 渲染的文字
-    saveList: [],
-    prombleList: [],
+    saveList: [], 
+    prombleList: [], // 渲染的文字
 
-    // 删除的标志
-    isdelete: -1,
-    toast: false,
-    warnToast: false,
+    isdelete: -1, // 删除的标志(编号)
+    toast: false, // 删除成功
+    warnToast: false, // 删除失败
     hideToast: false,
     hideWarnToast: false,
   },
-  totalk:function(e){
-    var id = e.currentTarget.id;
-    console.log(id)
-    wx.navigateTo({
-      url: '/pages/task/task?id='+id,
-    })
-  },
-  // 使文本框进入可编辑状态
-  showInput: function () {
-    this.search(inputMess)
-    this.setData({
-      inputShowed: true //设置文本框可以输入内容
-    });
-  },
-  // 取消搜索
-  hideInput: function () {
-    this.setData({
-      inputShowed: false
-    });
-    this.search("")
-  },
-  a: function (e) {
-    inputMess = e.detail.value
-    this.search(e.detail.value)
-  },
-  search: function (key) {
-    var THIS = this;
-
-    var arr = [];
-    for (let i in THIS.data.saveList) {
-      var item = THIS.data.saveList[i];
-      if (item.Sname.indexOf(key) >= 0 || item.S_comment.indexOf(key) >= 0)
-        arr.push(item);
-    }
-    THIS.setData({
-      prombleList: arr
-    })
-  },
-
+  
   onLoad: function (e) {
     let THIS = this;
     wx.cloud.callFunction({
@@ -86,42 +44,59 @@ Page({
     //获取最大Children_Id+1
     wx.cloud.callFunction({
       name: "Discussion_findall",
-      
       success(res) {
         console.log("更新数据成功", res.result.data[0].Children_Id)         
         child_Id=res.result.data[0].Children_Id+1     
         console.log(child_Id)
       },
       fail(res) {
-        // console.log("更新数据失败", res)
+        console.log("更新数据失败", res)
       }
     })
   },
 
-  onShow: function (e) {
-    this.onLoad();
-    // let THIS = this;
-    // wx.cloud.callFunction({
-    //   name: 'getcomment',
-    //   data: {
-    //     Father_Id: 0
-    //   },
-    //   success(res) {
-    //     console.log("获取数据成功", res.result.data),
-    //       res.result.data.forEach((item) => {
-    //         item.Date = item.Date.substring(0, 10) + " " + item.Date.substring(11, 19);
-    //       });
-    //     THIS.setData({
-    //       saveList: res.result.data,
-    //       prombleList: res.result.data
-    //     })
-    //   }
-    // })
+
+  // 使文本框进入可编辑状态
+  showInput: function () {
+    this.search(inputMess)
+    this.setData({
+      inputShowed: true //设置文本框可以输入内容
+    });
+  },
+  // 取消搜索
+  hideInput: function () {
+    this.setData({
+      inputShowed: false
+    });
+    this.search("")
+  },
+  //点击搜索事件
+  searchClick: function (e) {
+    inputMess = e.detail.value
+    this.search(e.detail.value)
+  },
+  //筛选
+  search: function (key) {
+    var THIS = this;
+
+    var arr = [];
+    for (let i in THIS.data.saveList) {
+      var item = THIS.data.saveList[i];
+      if (item.Sname.indexOf(key) >= 0 || item.S_comment.indexOf(key) >= 0)
+        arr.push(item);
+    }
+    THIS.setData({
+      prombleList: arr
+    })
   },
 
+  
 
+  onShow: function (e) {
+    this.onLoad();
+  },
 
-  // 点赞
+  // 点赞 更新事件
   likeUp: function (e) {
     let THIS = this
     var i = e.target.id;
@@ -141,18 +116,11 @@ Page({
         _id: id
       },
       success(res) {
-        // console.log("更新数据成功", res)
+        console.log("更新数据成功", res)
       },
       fail(res) {
-        // console.log("更新数据失败", res)
+        console.log("更新数据失败", res)
       }
-    })
-  },
-
-  // 确认删除
-  is_delete: function (e) {
-    this.setData({
-      isdelete: e.target.id
     })
   },
 
@@ -162,7 +130,6 @@ Page({
     var date = new Date();
     console.log(e.detail.value.text)
    
-
     wx.cloud.callFunction({
       name: "Discussion_add",
       data: {
@@ -171,8 +138,8 @@ Page({
         Father_Id: 0,
         Like_Number: 0,
         S_comment: e.detail.value.text,
-        Sname: "莫清宇",
-        Student_Number: "201806062611",
+        Sname: app.globalData.name,
+        Student_Number: app.globalData.account,
       },
       success(res) {
         console.log("更新数据成功", res)
@@ -198,6 +165,13 @@ Page({
     
   },
 
+  // 获取将要删除的编号
+  is_delete: function (e) {
+    this.setData({
+      isdelete: e.target.id
+    })
+  },
+
   // 取消删除
   delete_close: function () {
     this.setData({
@@ -217,29 +191,20 @@ Page({
         _id: id
       },
       success(res) {
-        // console.log("更新数据成功", res)
-        // var arr = [];
-        // for (let i in THIS.data.prombleList) {
-        //   if (i != THIS.isdelete)
-        //     arr.push(THIS.data.prombleList[i]);
-        // }
-        // THIS.setData({
-        //   prombleList: arr
-        // })
         THIS.onLoad();
-
         THIS.openToast();
       },
       fail(res) {
-        this.openWarnToast();
-        // console.log("更新数据失败", res)
+        THIS.openWarnToast();
+        console.log("更新数据失败", res)
       }
     })
 
-    this.delete_close()
+    THIS.delete_close()
   },
 
-  openToast: function () {
+  // 删除成功效果
+  openToast: function () { 
     this.setData({
       toast: true
     });
@@ -255,6 +220,7 @@ Page({
       }, 300);
     }, 3000);
   },
+  // 删除失败效果
   openWarnToast: function () {
     this.setData({
       warnToast: true
@@ -270,5 +236,14 @@ Page({
         });
       }, 300);
     }, 3000);
+  },
+
+  //跳转 courseTask页面
+  toPageCourseTask:function(e){
+    var id = e.currentTarget.id;
+    console.log(id)
+    wx.navigateTo({
+      url: '/pages/courseTalkReply/courseTalkReply?id='+id,
+    })
   },
 })
