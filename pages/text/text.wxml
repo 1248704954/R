@@ -1,0 +1,2 @@
+<!--pages/text/text.wxml-->
+<button bindtap="find">云函数多表查询</button>

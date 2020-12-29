@@ -1,2 +1,57 @@
-<!--pages/user/user.wxml-->
-<text>pages/user/user.wxml</text>
+<!--index.wxml-->
+<view class="container">
+
+<!-- 用户 openid -->
+<view class="userinfo">
+  <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-avatar"
+    style="background-image: url({{avatarUrl}})" size="default"></button>
+  <view class="userinfo-nickname-wrapper">
+    <button open-type="getUserInfo" bindgetuserinfo="onGetUserInfo" class="userinfo-nickname">
+      <text>{{bindMessage}}</text>
+    </button>
+  </view>
+</view>
+
+
+<!-- 个人信息 -->
+<view class="uploader">
+  <view class="uploader-text" bindtap="toPageMy">
+    <text class="iconfont icongerenziliao" style="font-size:30px;color:bule;"></text>
+    <text style="color:black;" >个人信息</text>
+    <text class="iconfont iconjiantou1" style="font-size:20px;color=#A9A9A9;"> </text>
+  </view>
+  <view class="uploader-container" wx:if="{{imgUrl}}">
+    <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+  </view>
+</view>
+
+
+<!-- 课程 -->
+<view class="uploader">
+  <navigator open-type="navigate" class="uploader-text" bindtap="toPageCourse">
+    <text class="iconfont iconkecheng" style="font-size:30px;color:orange"></text>
+    <text style="color:black;" decode="{{true}}">课程&emsp;&emsp;</text>
+    <text class="iconfont iconjiantou1" style="font-size:20px;color=	#808080;"> </text>
+  </navigator>
+</view>
+
+<!-- 笔记本 -->
+<view class="uploader">
+  <navigator  open-type="navigate" class="uploader-text">
+    <text class="iconfont iconbiji" style="font-size:30px;color:#1E90FF"></text>
+    <text style="color:black;" decode="{{true}}">笔记本&emsp;</text>
+    <text class="iconfont iconjiantou1" style="font-size:20px;color=#A9A9A9;"> </text>
+  </navigator>
+</view>
+
+<!-- 设置 -->
+<view class="uploader">
+  <navigator url="../openapi/openapi" open-type="navigate" class="uploader-text">
+    <text class="iconfont iconshezhi" style="font-size:30px;color:#696969"></text>
+    <text style="color:black;" decode="{{true}}">设置&emsp;&emsp;</text>
+    <text class="iconfont iconjiantou1" style="font-size:20px;color=#A9A9A9;"> </text>
+  </navigator>
+</view>
+
+
+</view>

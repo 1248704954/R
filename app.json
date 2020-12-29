@@ -1,10 +1,14 @@
 {
   "pages":[
+    
     "pages/index/index",
     "pages/information/information",
+    
+    "pages/search/search",
     "pages/user/user",
-    "pages/search/search"
-  
+    "pages/my/my",
+    "pages/courses/courses",
+    "pages/text/text"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -40,4 +44,5 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
+  
 }
