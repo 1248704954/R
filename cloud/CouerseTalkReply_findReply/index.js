@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
   var a=event.Children_Id
   try {
     //order
-    return await db.collection(event.courseID + '_Comment').where({
+    return await db.collection(event.courseID + '_Comment').orderBy('Date','asc').where({
       Children_Id:a,
     }).get({
       success: function (res) {

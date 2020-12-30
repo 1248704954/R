@@ -77,9 +77,6 @@ Page({
       },
       success(res){
         console.log("获取数据成功",res.result.data)
-        res.result.data.forEach((item) => {
-          item.Date = item.Date.substring(0,10)+" "+item.Date.substring(11,19)
-          });
         THIS.setData({
           List: res.result.data
         })
@@ -92,6 +89,9 @@ Page({
   publish: function (e) {
   let THIS = this;
   var date = new Date();
+  var dateString = date.toLocaleDateString();
+  var timeString = date.toString().split(" ")[4]; 
+  var finalString = dateString + " " + timeString;
   console.log(e.detail.value.text)
 
   //获取最大Children_Id+1
@@ -110,7 +110,7 @@ Page({
         data: {
           courseID: parseInt(courseID),
           Children_Id:child_Id,
-          Date: date,
+          Date: finalString,
           Father_Id: comment_id,
           Like_Number: 0,
           S_comment: e.detail.value.text,

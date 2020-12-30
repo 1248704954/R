@@ -1,0 +1,62 @@
+.title{
+  font-size: large;
+  font-weight: 600;
+  color:#333;
+  margin-top:30rpx;
+  margin-bottom: 30rpx;
+  text-align: center;
+}
+.picture{
+  margin: 0rpx 20rpx 20rpx 20rpx;
+  border: 3rpx solid #00BFFF;
+  border-radius: 10rpx;
+  box-shadow: 0 0 20rpx rgba(0, 0, 0, 0.15);
+  padding: 10rpx;
+
+}
+.content{
+  color: #666;
+  font-size: 29.5rpx;
+  margin-bottom: 20rpx;
+  line-height: 40rpx;
+  letter-spacing: 2rpx;
+  margin-left: 15rpx;
+  display:block;
+}
+
+label{display: block;margin: 8rpx;}
+textarea{width: 600rpx;height: 100rpx;margin-top: 10rpx;border: 2rpx solid #eee;}
+
+
+
+form {height: 100%; min-height: 100vh; display: flex;flex-direction: column; box-sizing: border-box;
+  overflow-x:hidden;} 
+
+
+.vv{
+  /* border-color: #83CBE6; 边框颜色 */
+  /* font-size:15px; */
+  /* border:1px solid red; */
+  /* font-family:"宋体"; */
+  
+  line-height:1.5em;
+  margin: 50rpx 15rpx 30rpx 10rpx;
+  text-align: justify;
+  padding-bottom: 30rpx;
+  border-bottom: solid 1.5px #DCDCDC;
+}
+.vv .idea{
+  background-color:#FFF; 
+  height:150rpx;
+  padding: 15rpx;
+}
+.submit{
+  background-color: #ee2e2e;
+  color: #FFF;
+  font-size: 35rpx;
+  border-radius: 20rpx;
+}
+radio-group .wx-radio-input.wx-radio-input-checked{
+  border: 1rpx solid #ee2e2e !important;
+  background:#ee2e2e !important;
+}

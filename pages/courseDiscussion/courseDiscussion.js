@@ -48,7 +48,6 @@ Page({
         console.log("获取数据成功", res.result.data);
         var tmp = []//tmp:临时数组,存删除标志
         res.result.data.forEach((item) => {
-          item.Date = item.Date.substring(0, 10) + " " + item.Date.substring(11, 19);
           if (item.Student_Number == app.globalData.account) tmp.push(true)
           else tmp.push(false)
         });
@@ -65,6 +64,9 @@ Page({
   publish: function (e) {
     var THIS = this;
     var date = new Date();
+    var dateString = date.toLocaleDateString();
+    var timeString = date.toString().split(" ")[4]; 
+    var finalString = dateString + " " + timeString;
     console.log(e.detail.value.text)
    
     //获取最大Children_Id+1
@@ -83,7 +85,7 @@ Page({
           data: {
             courseID: parseInt(courseID),
             Children_Id:child_Id,
-            Date: date,
+            Date: finalString,
             Father_Id: 0,
             Like_Number: 0,
             S_comment: e.detail.value.text,
@@ -155,7 +157,6 @@ Page({
 
     THIS.delete_close()
   },
-
   
   // 点赞 更新事件
   likeUp: function (e) {

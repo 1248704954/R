@@ -11,7 +11,8 @@
     "pages/courseMaterial/courseMaterial",
     "pages/courseIntroduce/courseIntroduce",
     "pages/courseDiscussion/courseDiscussion",
-    "pages/courseTalkReply/courseTalkReply"
+    "pages/courseTalkReply/courseTalkReply",
+    "pages/courseQuestionnaire/courseQuestionnaire"
   ],
   "window":{
     "backgroundTextStyle":"light",

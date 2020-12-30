@@ -100,8 +100,8 @@
           "scene": null
         },
         {
-          "name": "pages/courseDiscussion/courseDiscussion",
-          "pathName": "pages/courseDiscussion/courseDiscussion",
+          "name": "pages/courseQuestionnaire/courseQuestionnaire",
+          "pathName": "pages/courseQuestionnaire/courseQuestionnaire",
           "query": "",
           "scene": null
         }

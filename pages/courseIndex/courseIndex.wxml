@@ -94,7 +94,7 @@
         </view>
       </view>
       <view class="uploader">
-        <view class="uploader-text" bindtap="">
+        <view class="uploader-text" bindtap="toPageCourseQuestionnaire">
           <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYWXP1.png"></image>
           <text class="text">课程评价</text>
           <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
