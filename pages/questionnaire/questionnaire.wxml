@@ -1,0 +1,121 @@
+
+<form bindsubmit="submit">
+
+<view class="vv">
+<view>
+<text>1. 我很清楚本课程的学习目标、教学安排和考核要求</text>
+</view>
+<radio-group class="wx-radio-input" bindchange="radioChange1">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+<view class="vv">
+<view>
+<text>2.老师注重将育人融入教学，对我树立正确的人生观、价值观、世界观有帮助</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange2">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+<view class="vv">
+<view>
+<text>3. 课程内容有广度和深度，兼顾基础和前沿，有挑战度</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange3">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+<view class="vv">
+<view>
+<text>4.老师注重课堂管理，师生互动充分，学习气氛浓郁，有利于我专心学习</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange4">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+
+<view class="vv">
+<view>
+<text>5.老师注重学习兴趣的激发，提高了我的学习主动性</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange5">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+
+<view class="vv">
+<view>
+<text>6.老师注重启发引导，使我能积极思考并提出问题</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange6">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+
+<view class="vv">
+<view>
+<text>7.老师提供的课外学习资源丰富，对我的学习有帮助</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange7">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+<view class="vv">
+<view>
+<text>8.老师布置的课后作业或练习适当，批改与指导及时，我遇到的学习问题能及时解决</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange8">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+<view class="vv">
+<view>
+<text>9.老师关心和尊重我们，教学过程考核评价公正合理</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange9">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+
+<view class="vv">
+<view>
+<text>10.老师注重我们知识、能力和素质的协同发展，课程学习让我受益匪浅</text>
+</view>
+<radio-group class="radio-group" bindchange="radioChange10">
+    <label class="radio" wx:for="{{items}}"wx:key="id">
+        <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    </label>
+</radio-group>
+</view>
+<view class="vv" >
+  <text>教学中值得推荐或是值得改进的地方：：</text>
+  <textarea name="opinion" value="" />
+</view>
+<button form-type="submit">提交</button> 
+</form>

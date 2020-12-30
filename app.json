@@ -8,7 +8,10 @@
     "pages/user/user",
     "pages/my/my",
     "pages/courses/courses",
-    "pages/text/text"
+    "pages/text/text",
+    "pages/task/task",
+    "pages/discussion/discussion",
+    "pages/questionnaire/questionnaire"
   ],
   "window":{
     "backgroundTextStyle":"light",

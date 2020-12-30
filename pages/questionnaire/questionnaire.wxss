@@ -1,0 +1,22 @@
+
+label{display: block;margin: 8rpx;}
+textarea{width: 600rpx;height: 100rpx;margin-top: 10rpx;border: 2rpx solid #eee;}
+
+
+
+form {height: 100%; min-height: 100vh; display: flex;flex-direction: column; box-sizing: border-box;
+  background: #fffefe;overflow-x:hidden;} 
+
+
+.vv{
+  border-color: #83CBE6; /* 边框颜色 */
+  font-size:15px;
+  /* border:1px solid red; */
+  font-family:"宋体";
+  line-height:1.5em;
+  
+}
+radio-group .wx-radio-input.wx-radio-input-checked{
+  border: 1rpx solid #ee2e2e !important;
+  background:#ee2e2e !important;
+}

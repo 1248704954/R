@@ -1,0 +1,119 @@
+.id1{
+ background-color:#fff;
+
+}
+.id2{
+  background-color:rgb(252, 248, 248);
+  border: 3rpx solid #d6d4d0;
+ }
+.Sname1{
+  font-size: 14px;
+}
+.Sname2{
+  font-size: 14px;
+}
+.Date1{
+  font-size: 12px;
+}
+.Date2{
+  font-size: 12px;
+}
+
+/* pages/discussion/discussion.wxss */
+
+@import "../../lib/search.wxss";
+
+.promble-font {
+
+  margin-top: 30rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  flex-direction: column;
+
+  background-color: white;
+  border: 1.5rpx solid rgba(0, 0, 0, 0.1);
+  border-radius: 20rpx;
+}
+
+@import "../../lib/weui.wxss";
+
+.pocket_input {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+
+  display: flex;
+}
+
+.input_style {
+  margin-top: 15rpx;
+  margin-left: 20rpx;
+  margin-bottom: 10rpx;
+  width: 75%;
+
+  background-color: #F4F5F6;
+
+  font-size: large;
+  border-radius: 20rpx;
+
+  padding-left: 15rpx;
+  padding-top: 5rpx;
+
+  max-height: 200rpx;
+
+  overflow: hidden;
+}
+
+.input-placeholder {
+  margin-left: 25rpx;
+}
+
+.btn-font{
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  margin-right: 20rpx;
+  height: 60rpx;
+}
+
+::-webkit-scrollbar {
+  /*隐藏滚轮*/
+  display: none;
+}
+
+@import "../../lib/icon.wxss";
+
+.name-font {
+  margin-left: 15rpx;
+  margin-top: 10rpx;
+  margin-bottom: 0rpx;
+
+  color: blue;
+  font-size: medium;
+}
+
+.date-font {
+  margin-left: 15rpx;
+  margin-top: 0rpx;
+
+  color: grey;
+  font-size: small;
+}
+
+.text-font {
+  margin-left: 15rpx;
+  margin-top: 5rpx;
+  margin-bottom: 15rpx;
+
+  font-size: medium;
+
+  max-height: 200rpx;
+
+  overflow:hidden;
+  text-overflow:ellipse;
+}
+
+.delete-font {
+  position: absolute;
+  left: 680rpx;
+}

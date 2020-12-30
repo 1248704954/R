@@ -89,7 +89,7 @@ Page({
       url: '/pages/my/my',
     })
   },
-  toPageCourse: function() { //挑战 courses页面
+  toPageCourse: function() { //跳转 courses页面
     wx.navigateTo({
       url: '/pages/courses/courses',
     })

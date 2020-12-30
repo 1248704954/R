@@ -64,14 +64,20 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
+          "name": "pages/discussion/discussion",
+          "pathName": "pages/discussion/discussion",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/text/text",
-          "pathName": "pages/text/text",
+          "name": "pages/questionnaire/questionnaire",
+          "pathName": "pages/questionnaire/questionnaire",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/task/task",
+          "pathName": "pages/task/task",
           "query": "",
           "scene": null
         }
