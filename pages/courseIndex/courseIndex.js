@@ -108,7 +108,7 @@ Page({
   //跳转 courseDiscussion页面
   toPageCourseDiscussion: function(e) {
     wx.navigateTo({
-      url: '/pages/courseDiscussion/courseDiscussion'
+      url: '/pages/courseDiscussion/courseDiscussion?courseId=' + this.data.courseId
     })
   }
 })

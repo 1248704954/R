@@ -17,7 +17,7 @@
       <view style="display:flex">
         <view class="name-font">{{item.Sname}}</view>
         <!-- 删除 -->
-        <text class="iconfont iconshanchu delete-font" id="{{i}}" bindtap="is_delete"> </text>
+        <text class="iconfont iconshanchu delete-font" id="{{i}}" bindtap="is_delete" wx:if="{{deleteShow[i]}}"> </text>
       </view>
       <view class="date-font">{{item.Date}}</view>
       <!-- 评论 -->

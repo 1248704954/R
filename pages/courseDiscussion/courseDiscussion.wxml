@@ -17,29 +17,31 @@
   <view class="search-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
 </view>
 
-<view class="page__bd" wx:for="{{prombleList}}" wx:for-item="item" wx:for-index="i">
-  <view class="promble-font">
-    <view style="display:flex">
-      <view class="name-font">{{item.Sname}}</view>
-      <!-- 删除 -->
-      <text class="iconfont iconshanchu delete-font" id="{{i}}" bindtap="is_delete"> </text>
-    </view>
-    <view class="date-font">{{item.Date}}</view>
-    <!-- 评论 -->
-    <textarea class="text-font" disabled="true" auto-height="true" >{{item.S_comment}}</textarea>
-    <view style="display:flex">
-      <!-- 讨论 -->
-      <button bindtap="toPageCourseTask"  id="{{item.Children_Id}}">
-        <text class="iconfont icontaolun" style="font-size:40rpx;color:grey"></text>
-        <text style="font-size:30rpx;color:grey"> 讨论 </text>
-      </button>
-      <!-- 点赞 -->
-      <button bindtap="likeUp" id="{{i}}">
-        <text id="{{i}}" class="iconfont icondianzan"
-          style="font-size:40rpx;color:{{item.Like_Number>0?'blue':'grey'}}"></text>
-        <text id="{{i}}" style="font-size:30rpx;color:{{item.Like_Number>0?'blue':'grey'}}"> {{item.Like_Number}} 赞
-        </text>
-      </button>
+<view style="padding-bottom:150rpx">
+  <view class="page__bd" wx:for="{{prombleList}}" wx:for-item="item" wx:for-index="i">
+    <view class="promble-font">
+      <view style="display:flex">
+        <view class="name-font">{{item.Sname}}</view>
+        <!-- 删除 -->
+        <text class="iconfont iconshanchu delete-font" id="{{i}}" bindtap="is_delete" wx:if="{{deleteShow[i]}}"> </text>
+      </view>
+      <view class="date-font">{{item.Date}}</view>
+      <!-- 评论 -->
+      <textarea class="text-font" disabled="true" auto-height="true" >{{item.S_comment}}</textarea>
+      <view style="display:flex">
+        <!-- 讨论 -->
+        <button bindtap="toPageCourseTask"  id="{{item.Children_Id}}">
+          <text class="iconfont icontaolun" style="font-size:40rpx;color:grey"></text>
+          <text style="font-size:30rpx;color:grey"> 讨论 </text>
+        </button>
+        <!-- 点赞 -->
+        <button bindtap="likeUp" id="{{i}}">
+          <text id="{{i}}" class="iconfont icondianzan"
+            style="font-size:40rpx;color:{{item.Like_Number>0?'blue':'grey'}}"></text>
+          <text id="{{i}}" style="font-size:30rpx;color:{{item.Like_Number>0?'blue':'grey'}}"> {{item.Like_Number}} 赞
+          </text>
+        </button>
+      </view>
     </view>
   </view>
 </view>

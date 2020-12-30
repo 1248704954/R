@@ -4,7 +4,6 @@ const _ = db.command
 
 let inputMess = ""
 var courseID = ""
-// var util = require('../../utils/util.js')
 
 Page({
   data: {
@@ -48,18 +47,6 @@ Page({
   },
 
   onLoad: function (e) {
-    wx.cloud.callFunction({
-      name: "forsearchtime",
-      success(res){
-        console.log(222)
-        console.log(res.result.formatDate)
-      },
-      fail(res){
-        console.log(111);
-      }
-    })
-
-
     //获取页面传递参数
     courseID = e.courseId;
     console.log(e.courseId)
@@ -68,7 +55,7 @@ Page({
   },
 
   onShow:function() {
-    this.onLoad();
+    this.getCourseMaterial();
   },
 
   //获取课程资料列表
@@ -86,11 +73,6 @@ Page({
         var Res = res.result.data
         console.log(Res)
         for(let i in res.result.data) {
-          var date = res.result.data[i].filedate 
-
-          
-
-
           res.result.data[i].filedate = res.result.data[i].filedate.substring(0, 10) + " " + res.result.data[i].filedate.substring(11, 19);
           var url = res.result.data[i].file;
           var index = url.lastIndexOf(".") //获取最后一个.的位置

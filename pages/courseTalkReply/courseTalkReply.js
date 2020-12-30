@@ -1,6 +1,9 @@
 // pages/information/information.js
+const app = getApp()
+
 let comment_id=0
 let child_Id=0 // 最大Children_Id+1
+let courseID = ""
 
 Page({
 
@@ -9,6 +12,7 @@ Page({
    */
   data: {
     prombleList:[], //评论信息
+    deleteShow:[], //评论删除标志
     List:[] , //话题信息
     receive:null,
    
@@ -24,11 +28,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var receive=options.id;
+    var receive=options.commentid;
     this.setData({
       receive:receive
     })
     comment_id=parseInt(receive)
+    courseID = options.courseId
 
     this.initCourseReplyComment(); //初始化页面
   },
@@ -41,26 +46,33 @@ Page({
     comment_id = parseInt(THIS.data.receive)
     //评论信息
     wx.cloud.callFunction({
-      name: 'getcomment',
-            data: {
-              Father_Id: comment_id,
-            },
+      name: 'Discussion_findComment',
+      data: {
+        courseID: parseInt(courseID),
+        Father_Id: comment_id,
+      },
       success(res){
         console.log("获取数据成功",res.result.data)
+        var tmp = []
         res.result.data.forEach((item) => {
           item.Date = item.Date.substring(0,10)+" "+item.Date.substring(11,19)
+          if (item.Student_Number == app.globalData.account) tmp.push(true)
+          else tmp.push(false)
           });
         THIS.setData({
-          prombleList: res.result.data
+          prombleList: res.result.data,
+          deleteShow: tmp
         })
+        console.log(tmp)
         console.log(res.result.data)
       }
     })
     
     //话题信息
     wx.cloud.callFunction({
-      name: 'getcomment1',
+      name: 'CouerseTalkReply_findReply',
       data: {
+        courseID: parseInt(courseID),
         Children_Id: comment_id,
       },
       success(res){
@@ -85,6 +97,9 @@ Page({
   //获取最大Children_Id+1
   wx.cloud.callFunction({
     name: "Discussion_findall",
+    data: {
+      courseID: parseInt(courseID)
+    },
     success(res) {
       console.log("更新数据成功", res.result.data[0].Children_Id)         
       child_Id=res.result.data[0].Children_Id+1     
@@ -93,17 +108,17 @@ Page({
       wx.cloud.callFunction({
         name: "Discussion_add",
         data: {
+          courseID: parseInt(courseID),
           Children_Id:child_Id,
           Date: date,
           Father_Id: comment_id,
           Like_Number: 0,
           S_comment: e.detail.value.text,
-          Sname: "莫清宇",
-          Student_Number: "201806062611",
+          Sname: app.globalData.name,
+          Student_Number: app.globalData.account,
         },
         success(res) {
           console.log("更新数据成功", res)
-          child_Id=child_Id+1
           THIS.initCourseReplyComment(); //初始化页面
         },
         fail(res) {
@@ -152,7 +167,8 @@ Page({
     wx.cloud.callFunction({
       name: "Discussion_delete",
       data: {
-        _id: id
+        _id: id,
+        courseID: parseInt(courseID)
       },
       success(res) {
         console.log(id)
@@ -186,7 +202,8 @@ Page({
       name: "Discussion_LikeUp",
       data: {
         Like_Number: value,
-        _id: id
+        _id: id,
+        courseID: parseInt(courseID)
       },
       success(res) {
         // console.log("更新数据成功", res)
