@@ -31,6 +31,8 @@ Page({
     ],
     showValue : [],
     advice : '',
+    isOpenSubmit : true,
+    isSumbitQuestionnaire : false 
   },
 
   onLoad: function (e) {
@@ -48,13 +50,32 @@ Page({
     THIS.setData({
       showValue: tmp
     })
+
+    wx.cloud.callFunction({//查询该学号是否已提交问卷
+      name: "CourseQuestionnaire_findAccount",
+      data:{
+          Course_Id: courseID,
+          Student_Id: app.globalData.account
+        },
+       success(res){
+        if(res.result.data.length!=0){ 
+          THIS.setData({
+            isSumbitQuestionnaire : true
+          })
+        }
+        else
+        {
+          THIS.setData({
+            isSumbitQuestionnaire : false
+          })
+        }
+        console.log("res.result",THIS.data.isSumbitQuestionnaire)      
+       }
+     })
   },
   //单选框选择事件
   radioChange: function(e) {
     let THIS = this
-    wx.showLoading({
-      title: '提交中',
-    })
 
     var pstr = "showValue[" + e.currentTarget.id + "]"
     THIS.setData({
@@ -64,6 +85,11 @@ Page({
   //提交问卷事件
   courseQuestionnaireSubmit:function(e){
     let THIS = this
+
+    wx.showLoading({
+      title: '提交中',
+    })
+    
     THIS.setData({
       advice:e.detail.value
      })
@@ -102,7 +128,9 @@ Page({
               icon: 'success',
               duration: 1000,
               mask: true
-            })},
+            })
+            THIS.initCourseQuestionnaire(); //初始化页面
+          }
         })
       },
     })

@@ -89,7 +89,7 @@ Page({
 
       //查找敏感词
     wx.cloud.callFunction({
-      name: "courseDiscussion_findSensitiveWord",
+      name: "CourseDiscussion_findSensitiveWord",
       success(res) {
         THIS.setData({
             sensitiveword: res.result.data,

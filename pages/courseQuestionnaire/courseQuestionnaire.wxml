@@ -1,27 +1,37 @@
 <view class="title">课程评价</view>
 <view class="picture">
   <view class="content">
-    <form bindsubmit="courseQuestionnaireSubmit">
-
-        <view wx:for="{{questionTitle}}" data-id="{{index}}">
-            <view class="vv">
-            <view>
-            <text style="font-weight: bold;">{{questionTitle[index]}}</text>
-            </view>
-            <radio-group class="wx-radio-input" bindchange="radioChange" id="{{index}}">
-                <label class="radio" wx:for="{{items}}"wx:key="id">
-                    <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
-                </label>
-            </radio-group>
-            </view>
+    <view wx:if="{{isOpenSubmit}}">
+        <view wx:if="{{isSumbitQuestionnaire}}">
+            课程评价已完成！
         </view>
+        <view wx:if="{{!isSumbitQuestionnaire}}">
+            <form bindsubmit="courseQuestionnaireSubmit">
+                <view wx:for="{{questionTitle}}" data-id="{{index}}">
+                    <view class="vv">
+                    <view>
+                    <text style="font-weight: bold;">{{questionTitle[index]}}</text>
+                    </view>
+                    <radio-group class="wx-radio-input" bindchange="radioChange" id="{{index}}">
+                        <label class="radio" wx:for="{{items}}"wx:key="id">
+                            <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+                        </label>
+                    </radio-group>
+                    </view>
+                </view>
 
-        <view class="vv" style="border-bottom: solid 0px #DCDCDC;">
-        <text style="font-weight: bold;">教学中值得推荐或是值得改进的地方:</text>
-        <textarea class="idea" name="opinion" value=""/>
+                <view class="vv" style="border-bottom: solid 0px #DCDCDC;">
+                <text style="font-weight: bold;">教学中值得推荐或是值得改进的地方:</text>
+                <textarea class="idea" name="opinion" value=""/>
+                </view>
+                <button form-type="submit" class="submit">提交</button> 
+            </form>        
         </view>
-        <button form-type="submit" class="submit">提交</button> 
-        </form>    
+    </view>
+    <view wx:if="{{!isOpenSubmit}}">
+        暂未开放课程评价功能
+    </view>
+        
   </view>
 </view>
 
