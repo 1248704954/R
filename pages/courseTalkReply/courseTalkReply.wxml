@@ -21,7 +21,7 @@
       </view>
       <view class="date-font">{{item.Date}}</view>
       <!-- 评论 -->
-      <view class="text-font" disabled="true" auto-height="true">{{item.S_comment}}</view>
+      <view class="text-font" disabled="true" auto-height="true" style="padding-bottom:10rpx">{{item.S_comment}}</view>
       <view style="display:flex">
         <!-- 讨论 -->
         <button bindtap="toPageCourseTask"  id="{{item.Children_Id}}">

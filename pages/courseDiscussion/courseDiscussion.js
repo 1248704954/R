@@ -18,6 +18,9 @@ Page({
     prombleList: [], // 渲染的文字
     deleteShow:[], //评论删除标志
 
+    sensitiveword:[],//敏感词
+    isSensitiveword:false,//敏感词标志
+
     isdelete: -1, // 删除的标志(编号)
     toast: false, // 删除成功
     warnToast: false, // 删除失败
@@ -58,65 +61,102 @@ Page({
         })
       }
     })
+
+    // 查找敏感词
+    wx.cloud.callFunction({
+      name: "courseDiscussion_findSensitiveWord",
+      success(res) {
+        THIS.setData({
+            sensitiveword:res.result.data,
+            isSensitiveword: false
+        }) 
+          console.log(res.result.data)
+          // console.log("mgc",this.data.mgc[5].Word)       
+      }, 
+    })
   },
 
   // 发布函数
   publish: function (e) {
     var THIS = this;
-    var date = new Date();
-    var dateString = date.toLocaleDateString();
-    var timeString = date.toString().split(" ")[4]; 
-    var finalString = dateString + " " + timeString;
-    console.log(e.detail.value.text)
-   
-    //获取最大Children_Id+1
-    wx.cloud.callFunction({
-      name: "Discussion_findall",
-      data: {
-        courseID: parseInt(courseID)
-      },
-      success(res) {
-        console.log("更新数据成功", res.result.data[0].Children_Id)         
-        child_Id=res.result.data[0].Children_Id+1     
-        console.log(child_Id)
 
-        wx.cloud.callFunction({
-          name: "Discussion_add",
-          data: {
-            courseID: parseInt(courseID),
-            Children_Id:child_Id,
-            Date: finalString,
-            Father_Id: 0,
-            Like_Number: 0,
-            S_comment: e.detail.value.text,
-            Sname: app.globalData.name,
-            Student_Number: app.globalData.account,
-          },
-          success(res) {
-            console.log("更新数据成功", res)
-            THIS.initCourseDiscussionComment();
-          },
-          fail(res) {
-            console.log("更新数据失败", res)
-          }
-        })
-      },
-      fail(res) {
-        console.log("更新数据失败", res)
-      }
-    })
-
-    wx.showToast({
-      title: "发布成功",
-      icon: 'success',
-      duration: 1500,
-      mask: false,
-      success: function () {
+    //查找话题中是否存在敏感词
+    for (let i in THIS.data.sensitiveword) {    
+      if (String(e.detail.value.text).indexOf(THIS.data.sensitiveword[i].Word) >= 0 )
+      {
         THIS.setData({
-          text_value: ""
+          isSensitiveword:true
         })
-      },
-    })
+        wx.showModal({
+          title: "发布失败",
+          content: "存在敏感词！请重新编辑发布！",
+          showCancel: false
+        });
+      }
+    }
+
+    if (THIS.data.isSensitiveword == false)
+    {
+      var date = new Date();
+      var dateString = date.toLocaleDateString();
+      var timeString = date.toString().split(" ")[4]; 
+      var finalString = dateString + " " + timeString;
+      console.log(e.detail.value.text)
+      //获取最大Children_Id+1
+      wx.cloud.callFunction({
+        name: "Discussion_findall",
+        data: {
+          courseID: parseInt(courseID)
+        },
+        success(res) {
+          console.log("更新数据成功", res.result.data[0].Children_Id)         
+          child_Id=res.result.data[0].Children_Id+1     
+          console.log(child_Id)
+
+          wx.cloud.callFunction({
+            name: "Discussion_add",
+            data: {
+              courseID: parseInt(courseID),
+              Children_Id:child_Id,
+              Date: finalString,
+              Father_Id: 0,
+              Like_Number: 0,
+              S_comment: e.detail.value.text,
+              Sname: app.globalData.name,
+              Student_Number: app.globalData.account,
+            },
+            success(res) {
+              console.log("更新数据成功", res)
+              THIS.initCourseDiscussionComment();
+            },
+            fail(res) {
+              console.log("更新数据失败", res)
+            }
+          })
+        },
+        fail(res) {
+          console.log("更新数据失败", res)
+        }
+      })
+
+      wx.showToast({
+        title: "发布成功",
+        icon: 'success',
+        duration: 1500,
+        mask: false,
+        success: function () {
+          THIS.setData({
+            text_value: ""
+          })
+        },
+      })
+    }
+    else 
+    {
+      THIS.setData({
+        isSensitiveword: false
+      })
+    }
   },
 
   // 获取将要删除的编号

@@ -15,6 +15,9 @@ Page({
     deleteShow:[], //评论删除标志
     List:[] , //话题信息
     receive:null,
+
+    sensitiveword:[],//敏感词
+    isSensitiveword:false,//敏感词标志
    
     // 删除的标志
     isdelete: -1,
@@ -33,6 +36,7 @@ Page({
       receive:receive
     })
     comment_id=parseInt(receive)
+    console.log(comment_id)
     courseID = options.courseId
 
     this.initCourseReplyComment(); //初始化页面
@@ -55,7 +59,6 @@ Page({
         console.log("获取数据成功",res.result.data)
         var tmp = []
         res.result.data.forEach((item) => {
-          item.Date = item.Date.substring(0,10)+" "+item.Date.substring(11,19)
           if (item.Student_Number == app.globalData.account) tmp.push(true)
           else tmp.push(false)
           });
@@ -83,67 +86,104 @@ Page({
         console.log(THIS.data.List)
         }
       })
+
+      //查找敏感词
+    wx.cloud.callFunction({
+      name: "courseDiscussion_findSensitiveWord",
+      success(res) {
+        THIS.setData({
+            sensitiveword: res.result.data,
+            isSensitiveword: false
+        }) 
+          console.log(res.result.data)
+          // console.log("mgc",this.data.mgc[5].Word)       
+      },
+    })
   },
 
   // 发布函数
   publish: function (e) {
   let THIS = this;
-  var date = new Date();
-  var dateString = date.toLocaleDateString();
-  var timeString = date.toString().split(" ")[4]; 
-  var finalString = dateString + " " + timeString;
-  console.log(e.detail.value.text)
 
-  //获取最大Children_Id+1
-  wx.cloud.callFunction({
-    name: "Discussion_findall",
-    data: {
-      courseID: parseInt(courseID)
-    },
-    success(res) {
-      console.log("更新数据成功", res.result.data[0].Children_Id)         
-      child_Id=res.result.data[0].Children_Id+1     
-      console.log(child_Id)
-      comment_id = parseInt(THIS.data.receive)
-      wx.cloud.callFunction({
-        name: "Discussion_add",
-        data: {
-          courseID: parseInt(courseID),
-          Children_Id:child_Id,
-          Date: finalString,
-          Father_Id: comment_id,
-          Like_Number: 0,
-          S_comment: e.detail.value.text,
-          Sname: app.globalData.name,
-          Student_Number: app.globalData.account,
-        },
-        success(res) {
-          console.log("更新数据成功", res)
-          THIS.initCourseReplyComment(); //初始化页面
-        },
-        fail(res) {
-          // console.log("更新数据失败", res)
-        }
+  //查找话题中是否存在敏感词
+  for (let i in THIS.data.sensitiveword) {    
+    if (String(e.detail.value.text).indexOf(THIS.data.sensitiveword[i].Word) >= 0 )
+    {
+      THIS.setData({
+        isSensitiveword:true
       })
-
-      //成功窗口
-      wx.showToast({
-        title: "发布成功",
-        icon: 'success',
-        duration: 1500,
-        mask: false,
-        success: function () {
-          THIS.setData({
-            text_value: ""
-          })
-        },
-      })
-    },
-    fail(res) {
-      console.log("更新数据失败", res)
+      wx.showModal({
+        title: "发布失败",
+        content: "存在敏感词！请重新编辑发布！",
+        showCancel: false
+      });
     }
-  })
-  
+  }
+
+  if (THIS.data.isSensitiveword == false)
+  {
+    var date = new Date();
+    var dateString = date.toLocaleDateString();
+    var timeString = date.toString().split(" ")[4]; 
+    var finalString = dateString + " " + timeString;
+    console.log(e.detail.value.text)
+
+    //获取最大Children_Id+1
+    wx.cloud.callFunction({
+      name: "Discussion_findall",
+      data: {
+        courseID: parseInt(courseID)
+      },
+      success(res) {
+        console.log("更新数据成功", res.result.data[0].Children_Id)         
+        child_Id=res.result.data[0].Children_Id+1     
+        console.log(child_Id)
+        comment_id = parseInt(THIS.data.receive)
+        wx.cloud.callFunction({
+          name: "Discussion_add",
+          data: {
+            courseID: parseInt(courseID),
+            Children_Id:child_Id,
+            Date: finalString,
+            Father_Id: comment_id,
+            Like_Number: 0,
+            S_comment: e.detail.value.text,
+            Sname: app.globalData.name,
+            Student_Number: app.globalData.account,
+          },
+          success(res) {
+            console.log("更新数据成功", res)
+            THIS.initCourseReplyComment(); //初始化页面
+          },
+          fail(res) {
+            // console.log("更新数据失败", res)
+          }
+        })
+
+        //成功窗口
+        wx.showToast({
+          title: "发布成功",
+          icon: 'success',
+          duration: 1500,
+          mask: false,
+          success: function () {
+            THIS.setData({
+              text_value: ""
+            })
+          },
+        })
+      },
+      fail(res) {
+        console.log("更新数据失败", res)
+      }
+    })
+  }
+  else
+  {
+    THIS.setData({
+      isSensitiveword: false
+    })
+  }
  },
  
  // 获取将要删除的编号
@@ -250,9 +290,10 @@ openWarnToast: function () {
   //跳转 courseTask页面
   toPageCourseTask:function(e){
     var id = e.currentTarget.id;
+    console.log('/pages/courseTalkReply/courseTalkReply?courseId='+ courseID + '&commentid=' + id)
     console.log(id)
     wx.navigateTo({
-      url: '/pages/courseTalkReply/courseTalkReply?id='+id,
+      url: '/pages/courseTalkReply/courseTalkReply?courseId='+ courseID + '&commentid=' + id,
     })
   },
 })

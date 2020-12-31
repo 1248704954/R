@@ -12,8 +12,8 @@ Page({
   data: {
     items: [
       {name: '5', value: '完全同意'},
-      {name: '4', value: '同意', checked: true},
-      {name: '3', value: '基本同意'},
+      {name: '4', value: '同意'},
+      {name: '3', value: '基本同意', checked: true},
       {name: '2', value: '不同意'},
       {name: '1', value: '完全不同意'},
     ],
@@ -44,7 +44,7 @@ Page({
   initCourseQuestionnaire: function () {
     let THIS = this;
     var tmp = [];
-    for (let i = 0; i <= 10; i++) tmp.push(0);
+    for (let i = 0; i <= 10; i++) tmp.push(3);
     THIS.setData({
       showValue: tmp
     })
@@ -52,7 +52,11 @@ Page({
   //单选框选择事件
   radioChange: function(e) {
     let THIS = this
-    var pstr = "showValue[" + i + "]"
+    wx.showLoading({
+      title: '提交中',
+    })
+
+    var pstr = "showValue[" + e.currentTarget.id + "]"
     THIS.setData({
       [pstr] : e.detail.value
     })
@@ -71,29 +75,36 @@ Page({
     console.log(text)
     // console.log(this.data.text.opinion)
     wx.cloud.callFunction({ //查询记录(条件：账号)
-      name : "questionnaire",
+      name : "CourseQuestionnaire_addQuestionnaire",
       data:{   
-        StudentComment:text,
-        StudentScore: score
+        StudentComment: text,
+        StudentScore: score,
+        StudentId: app.globalData.account
       },
-      fail(res){console.log("获取数据失败",res)},
+      fail(res){
+        console.log("获取数据失败",res)
+        wx.hideLoading({
+          success: (res) => {
+            wx.showToast({
+              title: '提交失败',
+              icon: 'fail',
+              duration: 1000,
+              mask: true
+            })},
+        })
+      },
       success(res){
         console.log("获取数据成功",THIS.data.text)
-      
-      }
+        wx.hideLoading({
+          success: (res) => {
+            wx.showToast({
+              title: '提交成功',
+              icon: 'success',
+              duration: 1000,
+              mask: true
+            })},
+        })
+      },
     })
-    wx.showToast({
-      title: '提交成功',
-      icon: 'none',
-      duration: 1500,
-      success: function () {
-       //弹窗后执行，可以省略
-	   setTimeout(function () {
-	      wx.reLaunch({
-	       url: '../index/index',
-	          })
-          }, 1500);          
-        }
-      })
   },
 })
