@@ -10,6 +10,7 @@ exports.main = async (event, context) => {
   }).project({
     // filedate: 1
     _id: 0,
+    
     file:1,
     filename:1,
     filedate: $.dateToString({
