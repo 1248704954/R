@@ -1,6 +1,7 @@
 {
   "pages":[
-    
+    "pages/canvas/canvas",
+    "pages/countTime/countTime",
     "pages/index/index",
     "pages/information/information",
     

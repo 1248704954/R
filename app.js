@@ -3,7 +3,12 @@ App({
   globalData: {
     openid: null, //微信号
     account: null, //学工号
-    avatarUrl: "https://s3.ax1x.com/2020/12/16/rlEkjg.png" //头像url
+    avatarUrl: "https://s3.ax1x.com/2020/12/16/rlEkjg.png", //头像url
+    // xData:[],
+    // data_cur:[]
+    xData :['李明轩','赵柯尔','肖龙西','戚梦赞','莫清宇'],
+    data_cur:[95,90,90,100,95]
+    
   },
 
   onLaunch: function () {
@@ -19,5 +24,24 @@ App({
         traceUser: true,
       })
     }
+  //   var THIS =this
+  //   wx.cloud.callFunction({
+  //   name: "findc", //云函数的名字
+   
+  //   complete: res => {
+    
+  //     for (let i in res.result.data) {           
+                
+  //          THIS.data_cur=parseInt(res.result.data[i].Student_Score)
+  //          THIS.xData=(res.result.data[i].Student_Name)
+
+  //           console.log(i)     
+  //           //  console.log(data_cur[i])  
+  //           //  console.log(xData[i]) 
+  //     }
+  //     // console.log(data_cur)  
+  //     // console.log(xData) 
+  //   }
+  // })
   }
 })

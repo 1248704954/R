@@ -64,8 +64,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "pages/discussion/discussion",
-          "pathName": "pages/discussion/discussion",
+          "name": "pages/countTime/countTime",
+          "pathName": "pages/countTime/countTime",
           "query": "",
           "scene": null
         },
@@ -76,8 +76,8 @@
           "scene": null
         },
         {
-          "name": "pages/task/task",
-          "pathName": "pages/task/task",
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
           "query": "",
           "scene": null
         }

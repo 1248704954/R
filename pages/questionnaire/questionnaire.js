@@ -14,7 +14,7 @@ Page({
       {name: '1', value: '完全不同意'},
     
     ],
-   
+   isexu:false,
     value1:3,
     value2:3,
     value3:3,
@@ -97,12 +97,15 @@ Page({
      var text = THIS.data.text.opinion;
 
     console.log(score)
-    // console.log(this.data.text.opinion)
+    
+ 
+
     wx.cloud.callFunction({ //查询记录(条件：账号)
       name : "questionnaire",
       data:{   
-        StudentComment:text,
-        StudentScore: score
+        Student_Comment:text,
+        Student_Id:201806062109,
+        Student_Score: score
       },
       fail(res){console.log("获取数据失败",res)},
       success(res){
@@ -130,7 +133,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var THIS =this
+    wx.cloud.callFunction({//查询该学号是否评论过
+     name:"findc",
+     data:{
+      cId:'1_Course_Teacher_Assessment',
+         Student_Id:201806062109
+       },
+      success(res){
+       if(res.result.data.length!=0){ 
+         THIS.setData({
+           isexu:true
+        })}
+        console.log("res.result",THIS.data.isexu)      
+      }
+    })
   },
 
   /**
