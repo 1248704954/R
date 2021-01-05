@@ -1,0 +1,100 @@
+<!--pages/my/my.wxml-->
+<view wx:for="{{DataList}}" wx:key="my">  
+  <view class="titleCss">
+    <image class="titleButton" src="{{avatarUrl}}"></image>
+    <view>
+      <view class="weui-label labelCss">
+        <text class="textCss">{{item.Name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label labelCss">
+          <text class="textCss">学工号:</text>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input inputCss" placeholder-class="place-holder" placeholder="{{item.Account}}"   disabled = "false"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label labelCss">
+          <text class="textCss">专业:</text>
+        </view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input inputCss" placeholder-class="place-holder" placeholder="{{item.Major}}" 
+        disabled="true" />
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-label labelCss">
+        <text class="textCss">班级:</text>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input inputCss" placeholder-class="place-holder" placeholder="{{item.Class}}" 
+        disabled="true"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-label labelCss">
+        <text class="textCss">性别:</text>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input inputCss" placeholder-class="place-holder" placeholder="{{item.Sex}}"
+        disabled="true"/>
+      </view>
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-label labelCss">
+        <text class="textCss">电话:</text>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input inputCss" placeholder-class="place-holder" placeholder="{{item.PhoneNumber}}" disabled="true"/>
+      </view>
+    </view>
+
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-label labelCss">
+        <text class="textCss">学校:</text>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input inputCss" placeholder-class="place-holder" placeholder="{{item.School}}" disabled="true"  />
+      </view>
+    </view>
+  </view>
+</view>
+<view class="page__bd page__bd_spacing addBnCss">
+  <button class="weui-btn" type="warn"  bindtap="powerDrawer" data-statu="open" wx:if="{{showBinding}}">用户绑定</button>
+  <button class="weui-btn" type="warn" bindtap="exitBinding" wx:if="{{showExitBinding}}">解除绑定</button>
+  <button class="weui-btn" type="warn" bindtap="addUser">退出账号</button>
+</view>
+
+
+<!--绑定用户窗口-->
+<!--mask-->
+<view class="drawer_screen" bindtap="powerDrawer" data-statu="close" wx:if="{{showModalStatus}}"></view>
+<!--content-->
+<!--使用animation属性指定需要执行的动画-->
+<view animation="{{animationData}}" class="drawer_box" wx:if="{{showModalStatus}}">
+  <!--drawer content-->
+  <view class="drawer_title">绑 定 用 户</view>
+  <view class="drawer_content">
+    <view class="top grid">
+      <label class="title col-0">账号</label>
+      <input class="input_base input_h30 col-1" name="Account" placeholder="请输入学号/工号" bindinput="addAccount"></input>
+    </view>
+    <view class="top grid">
+      <label class="title col-0">姓名</label>
+      <input class="input_base input_h30 col-1" name="Name" placeholder="请输入姓名" bindinput="addName"></input>
+    </view>
+    <view class="top grid" wx:if="{{isBinding}}">
+      <test class="message" style="color:red" >绑定失败！账号与姓名不一致 或 该账号已被绑定！</test>
+    </view>
+  </view>
+  <view class="btn_ok" bindtap="binding" data-statu="close">立即绑定</view>
+</view>

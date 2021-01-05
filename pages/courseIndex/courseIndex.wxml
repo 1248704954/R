@@ -1,0 +1,52 @@
+<!--pages/courseIndex/courseIndex.wxml-->
+<view class="cates">
+  <!--滚动条 -->
+  <view>
+    <scroll-view scroll-x="true">
+      <view class="scroll-view_class">
+        <view>
+          <view class="{{falg==0?'choose':'nochoose'}}" id="0" bindtap="select">任务</view>
+          <view class="divLine" wx:if="{{falg == 0}}"> </view>
+        </view>
+        <view>
+          <view class="{{falg==1?'choose':'nochoose'}}" id="1" bindtap="select">章节</view>
+          <view class="divLine" wx:if="{{falg == 1}}"> </view>
+        </view>
+        <view>
+          <view class="{{falg==2?'choose':'nochoose'}}" id="2" bindtap="select">更多</view>
+          <view class="divLine" wx:if="{{falg == 2}}"> </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view wx:if="{{falg == 0}}">
+      任务
+    </view>
+
+    <view wx:if="{{falg == 1}}">
+      <view class="page__bd" wx:for="{{ChapterList}}" wx:for-index="i" wx:for-item="Chapter">
+        <view class="weui-cells__title" style="display:flex" id = "{{i}}" bindtap="choose_Chapter">
+          <switch class="switch-font" checked="" disabled="true"></switch>
+          <view style="font-size:large" id = "{{i}}">
+            第{{S_num[(i+1)/10]}}{{s_num[(i+1)%10]}}章：{{Chapter.Chapter_Name}}
+          </view>
+        </view>
+        <view class="weui-cells weui-cells_after-title"  wx:if="{{vis[i]}}" wx:for="{{Chapter.Unit_List}}" wx:for-index="j"
+          wx:for-item="Unit">
+          <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+            <view class="weui-cell__hd">
+              <image class="iconfont icondengdai-"></image>
+            </view>
+            <view class="weui-cell__bd" style="font-size:small">
+              第{{S_num[(j+1)/10]}}{{s_num[(j+1)%10]}}单元：{{Unit.Chapter_Unit_Name}}</view>
+          </navigator>
+        </view>
+        <view class="divLine2" wx:if="{{!vis[i]}}"> </view>
+      </view>
+    </view>
+
+    <view wx:if="{{falg == 2}}">
+      更多
+    </view>
+  </view>
+</view>

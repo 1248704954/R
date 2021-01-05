@@ -1,0 +1,56 @@
+<view class="cates">
+      <view class="chapter_Top">
+        <view class="chapter_Name">1.1 章节名称</view>
+      </view>
+      <view class="chapter_Part"> <!--资料-->
+        <view> <!--任务点-->
+          <view class="chapter_Point">
+            <text class = "iconfont icondengdai-"></text>
+          </view>
+          <view class="chapter_Text">任务点</view>
+        </view>
+        <view wx:for='{{items}}'>
+          <view class= "chapter_Video" data-id='{{index}}'>
+            <video src='{{item.video}}' class='video' id='my{{index}}'>
+            </video>
+          </view>
+          <text class="chapter_Description">{{item.introduce}}</text>
+        </view>
+      </view>
+      
+      <view class="chapter_Part"> <!--资料-->
+        <view class="chapter_Main"> <!--任务点-->
+          <view class="chapter_Point">
+            <text class = "iconfont icondengdai-"></text>
+          </view>
+          <view class="chapter_Text">任务点</view>
+        </view>
+        <view wx:for='{{items}}' wx:key>
+          <view class="chapter_Document">
+              <view class="chapter_Document_Pic" >
+                <image src="https://s3.ax1x.com/2020/12/22/rskzSP.png" style="width:110rpx; height:110rpx"></image>
+              </view>
+            <view class="chapter_Document_Name"  id="{{item.file}}" bindtap="openDocument">{{item.filename}}</view>
+          </view>
+          <text class="chapter_Description">{{item.introduce}}</text>
+        </view>
+      </view>
+</view>
+
+
+
+<!-- <view wx:for='{{items}}' wx:key>
+<view>引言</view>
+<image class='cover01' mode="aspectFit" src='{{item.cover01}}'></image>
+<view>资料</view>
+<view>
+  <text class='text'>{{item.filename}}</text>
+</view>
+<button bindtap="l" type="default" id="{{item.file}}">下载文件</button>
+<view>视频</view>
+ <view class='videoView' data-id='{{index}}'>
+   <video src='{{item.video}}' class='video' id='my{{index}}'>
+   </video>
+ </view>
+ <text class='text'>{{item.introduce}}</text>
+</view> -->

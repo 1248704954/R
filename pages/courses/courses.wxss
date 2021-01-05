@@ -1,0 +1,44 @@
+/* pages/courses/courses.wxss */
+
+@import "../../lib/weui.wxss";
+.one-course{
+  margin-top: 40rpx;
+  margin-left: 2%;
+  margin-right: 15rpx;
+  height: 140rpx;
+  width: 96%;
+  background: #fff;
+  border: 1.5rpx solid rgba(0, 0, 0, 0.1);
+  border-radius: 10rpx;
+
+  display: flex;
+  flex-direction: row;
+}
+.col-text {
+  display: flex;
+  flex-direction: column;
+}
+.Cname-text {
+  margin-left: 40rpx;
+  margin-top: 20rpx;
+}
+.Tname-text {
+  margin-left: 40rpx;
+  font-size: 25rpx;
+  color: #9B9B9B;
+}
+.course-image {
+  margin-left: 30rpx;
+  margin-top: 20rpx;
+  border-radius: 5rpx;
+  width: 100rpx;
+  height: 100rpx;
+  
+}
+
+@import "../../lib/icon.wxss";
+.iconjiantou1 {
+  margin-top: 40rpx;
+  position: absolute;
+  left: 670rpx;
+}
