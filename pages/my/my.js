@@ -15,7 +15,6 @@ Page({
     showExitBinding: false, //显示 解绑 按钮
     DataList : [] //个人具体信息
   },
-  
  onLoad(){
     let THIS = this
     THIS.setData({
