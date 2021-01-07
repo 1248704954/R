@@ -94,7 +94,7 @@ Page({
       advice:e.detail.value
      })
      score = 0;
-     for (let i = 1; i <= 10; i++)
+     for (let i = 1; i <= 10; i++) 
       score += parseInt(THIS.data.showValue[i])
      score = score * 2
      var text = THIS.data.advice.opinion;
