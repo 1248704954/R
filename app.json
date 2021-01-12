@@ -1,5 +1,6 @@
 {
   "pages":[
+    
     "pages/index/index",
     "pages/information/information",
     
@@ -12,7 +13,16 @@
     "pages/courseIntroduce/courseIntroduce",
     "pages/courseDiscussion/courseDiscussion",
     "pages/courseTalkReply/courseTalkReply",
-    "pages/courseQuestionnaire/courseQuestionnaire"
+    "pages/courseQuestionnaire/courseQuestionnaire",
+    "pages/courseTeacherFunction/courseTeacherFunction",
+    "pages/courseStatistics/courseStatistics",
+    "pages/courseStudentSign/courseStudentSign",
+    "pages/courseInfo/courseInfo",
+    "pages/courseUpload/courseUpload",
+    "pages/courseTeacherSign/courseTeacherSign",
+    "pages/courseWorklist/courseWorklist",
+    "pages/courseStudentWorkIndex/courseStudentWorkIndex",
+    "pages/courseStudentWorkPreview/courseStudentWorkPreview"
   ],
   "window":{
     "backgroundTextStyle":"light",

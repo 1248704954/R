@@ -70,8 +70,11 @@ Page({
           if(res.data.length!=0) { //已经绑定账号
             app.globalData.account = res.data[0].Account
             app.globalData.name = res.data[0].Name
+            console.log(res.data[0].Account.length)
+            if (res.data[0].Account.length == 12) app.globalData.role = 1;
+            else app.globalData.role = 0;
             console.log(res.data)
-            console.log(app.globalData.name)
+            console.log(app.globalData.role)
             that.setData({
               Accout:res.data[0].Account,
               Name:res.data[0].Name,

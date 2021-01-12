@@ -4,6 +4,7 @@ App({
     openid: null, //微信号
     account: null, //学工号
     name: null, //姓名
+    role: 0, //用户类别
     avatarUrl: "https://s3.ax1x.com/2020/12/16/rlEkjg.png" //头像url
   },
 

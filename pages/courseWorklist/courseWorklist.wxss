@@ -1,0 +1,48 @@
+/* pages/workList/workList.wxss */
+@import "../../lib/search.wxss";
+@import "../../lib/weui.wxss";
+
+.one-work{
+  margin-top: 40rpx;
+  margin-left: 2%;
+  margin-right: 15rpx;
+  width: 96%;
+  background: #fff;
+  border: 1.5rpx solid rgba(0, 0, 0, 0.1);
+  border-radius: 10rpx;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.titile {
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+
+  font-size: large;
+  font-weight:bold;
+  color: black;
+}
+
+.time{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-size: small;
+}
+
+.state {
+  margin-left: 20rpx;
+  font-size: small;
+  font-weight: bold;
+}
+
+.submit{
+  height: 100rpx;
+}
+
+.submit-button {
+  margin-top: 15rpx;
+  font-size: small;
+  background: 	#EEE;
+  color: black;
+}

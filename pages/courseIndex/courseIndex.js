@@ -4,6 +4,7 @@ var option = 1; //option(1:任务; 2:章节; 3:更多)
 
 Page({
   data: {
+    role: 0,
     ChapterList: [], //显示章节列表
     displayDroplist:[], //显示下拉框
     courseId: null, //课程Id
@@ -41,9 +42,11 @@ Page({
   },
 
   onLoad: function (e) {
+    console.log(this.data.role)
     var receiveData = e.courseId; //接受参数并赋值
     this.setData({
-      courseId: receiveData //获取课程编号
+      courseId: receiveData, //获取课程编号
+      role: app.globalData.role
     })
 
     this.setData({
@@ -117,5 +120,34 @@ Page({
     wx.navigateTo({
       url: '/pages/courseQuestionnaire/courseQuestionnaire?courseId=' + this.data.courseId
     })
-  }
+  },
+
+  //跳转 courseTeacherFunction页面
+  toPageCourseTeacherFunction: function(e) {
+    wx.navigateTo({
+      url: '/pages/courseTeacherFunction/courseTeacherFunction?courseId=' + this.data.courseId
+    })
+  },
+
+  //跳转 courseStatistics页面
+  toPageCourseStatistics: function(e) {
+    wx.navigateTo({
+      url: '/pages/courseStatistics/courseStatistics?courseId=' + this.data.courseId
+    })
+  },
+
+  //跳转 courseInfo页面
+  toPageCourseInfo: function(e) {
+    wx.navigateTo({
+      url: '/pages/courseInfo/courseInfo?courseId=' + this.data.courseId
+    })
+  },
+
+  //跳转 courseWorklist页面
+  toPageCourseWorklist: function(e) {
+    wx.navigateTo({
+      url: '/pages/courseWorklist/courseWorklist?courseId=' + this.data.courseId
+    })
+  },
+
 })

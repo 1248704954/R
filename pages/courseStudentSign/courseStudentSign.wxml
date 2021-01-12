@@ -1,0 +1,6 @@
+<view style="margin-bottom:50rpx; text-align:center; margin-top:50rpx">现在是：{{N}}</view>
+<button bindtap="dbupdate3" style="background-color:#EEE; margin-bottom:50rpx">请确认截止时间</button>
+<view style="margin-bottom:50rpx; text-align:center">{{E}}</view>
+<button bindtap="dbupdate2" style="background-color:#EEE">签到</button>
+<view style="color:red; text-align:center">{{info}}</view>
+

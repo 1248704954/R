@@ -1,0 +1,85 @@
+/* pages/work/work.wxss */
+
+@import "../..//lib/icon.wxss";
+@import "../../lib/weui.wxss";
+
+.titile {
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+
+  font-size: large;
+  font-weight:bold;
+  color: black;
+}
+
+.div-line{
+  background-color: #C0C0C0;
+  height: 2rpx;
+}
+
+.time{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  font-size: small;
+}
+
+.promble{
+  margin-left: 20rpx;
+  font-size:medium;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+@import "../../lib/iconfont.wxss";
+
+
+.eidt-detail-images-container .btn-container {
+    margin-top: 20rpx;
+}
+
+.eidt-detail-images-container .btn-container .btn-view {
+    padding: 0rpx 32rpx 32rpx 32rpx;
+}
+
+.eidt-detail-images-container .btn-container .btn-view button {
+    border-radius: 0rpx;
+}
+
+.wrapper {
+    padding: 5px;
+}
+
+.iconfont {
+    display: inline-block;
+    padding: 8px 8px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.toolbar {
+    box-sizing: border-box;
+    border-bottom: 0;
+    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+.ql-container {
+    box-sizing: border-box;
+    padding: 12px 15px;
+    width: 100%;
+    min-height: 50vh;
+    height: 100%;
+    background: #fff;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    border: 1px solid #eee;
+}
+
+.ql-active {
+    color: #06c;
+}

@@ -1,0 +1,8 @@
+<!--pages/courseInfo/courseInfo.wxml-->
+<view class="uploader" bindtap="toPageCourseStudentSign">
+  <view class="uploader-text">
+    <image class="icon" src="https://s3.ax1x.com/2020/12/18/rYWGuD.png"></image>
+    <text class="text">签到通知</text>
+    <text class="iconfont iconjiantou1" style="font-size:15px;color=#808080;"> </text>
+  </view>
+</view>

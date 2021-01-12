@@ -1,0 +1,2 @@
+<button bindtap="uploadfile" >上传文件</button>
+<view style="color:red; text-align:center">{{mess}}</view>

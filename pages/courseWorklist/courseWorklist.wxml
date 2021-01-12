@@ -1,0 +1,31 @@
+<!--pages/workList/workList.wxml-->
+
+<view class="one-work">
+  <text class="titile"> 实验五 校车预约系统面向对象设计</text>
+  <text class="time">开始时间：2020-12-30 14:57</text>
+  <text class="time">截止时间：2021-01-03 14:57</text>
+  <view>
+    <text class="time">状态：</text>
+    <text class="state">已完成</text>
+  </view>
+  <view class="submit">
+    <button class = "submit-button">
+      查看
+    </button>
+  </view>
+</view>
+
+<view class="one-work">
+  <text class="titile"> 实验六 UML 进一步学习</text>
+  <text class="time">开始时间：2021-01-07 13:10</text>
+  <text class="time">截止时间：2021-01-30 13:10</text>
+  <view>
+    <text class="time">状态：</text>
+    <text class="state">待做</text>
+  </view>
+  <view class="submit" bindtap="toPageCourseStudentWorkIndex">
+    <button class = "submit-button">
+      做作业
+    </button>
+  </view>
+</view>
